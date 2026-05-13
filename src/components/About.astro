@@ -1,0 +1,108 @@
+---
+const stacks = [
+  { label: 'React',      color: '#61dafb', bg: 'rgba(97,218,251,0.1)',  border: 'rgba(97,218,251,0.3)'  },
+  { label: 'TypeScript', color: '#3178c6', bg: 'rgba(49,120,198,0.1)',  border: 'rgba(49,120,198,0.3)'  },
+  { label: 'Node.js',    color: '#68a063', bg: 'rgba(104,160,99,0.1)',  border: 'rgba(104,160,99,0.3)'  },
+  { label: 'Python',     color: '#ffd43b', bg: 'rgba(255,212,59,0.1)',  border: 'rgba(255,212,59,0.3)'  },
+  { label: 'PostgreSQL', color: '#336791', bg: 'rgba(51,103,145,0.12)', border: 'rgba(51,103,145,0.4)'  },
+  { label: 'Docker',     color: '#2496ed', bg: 'rgba(36,150,237,0.1)',  border: 'rgba(36,150,237,0.3)'  },
+  { label: 'AWS',        color: '#ff9900', bg: 'rgba(255,153,0,0.1)',   border: 'rgba(255,153,0,0.3)'   },
+  { label: 'GraphQL',    color: '#e535ab', bg: 'rgba(229,53,171,0.1)',  border: 'rgba(229,53,171,0.3)'  },
+  { label: 'Next.js',    color: '#fff',    bg: 'rgba(255,255,255,0.07)',border: 'rgba(255,255,255,0.2)' },
+  { label: 'Tailwind',   color: '#38bdf8', bg: 'rgba(56,189,248,0.1)',  border: 'rgba(56,189,248,0.3)'  },
+  { label: 'Redis',      color: '#ff4438', bg: 'rgba(255,68,56,0.1)',   border: 'rgba(255,68,56,0.3)'   },
+  { label: 'Rust',       color: '#f74c00', bg: 'rgba(247,76,0,0.1)',    border: 'rgba(247,76,0,0.3)'    },
+];
+
+---
+
+<section id="about" style="background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Left: text -->
+      <div class="reveal-left">
+        <p class="section-label">
+          <span class="es-only">// sobre mí</span>
+          <span class="en-only">// about me</span>
+        </p>
+        <h2 class="section-title">
+          <span class="es-only">El humano detrás<br/>del teclado</span>
+          <span class="en-only">The human behind<br/>the keyboard</span>
+        </h2>
+
+        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; font-size: 1.02rem;">
+          <span class="es-only">
+            Soy desarrollador de software enfocado en crear soluciones prácticas, bien estructuradas y
+            pensadas para el mundo real. Me interesa entender a fondo cada problema antes de resolverlo,
+            buscando siempre construir sistemas eficientes, claros y con propósito.
+          </span>
+          <span class="en-only">
+            I'm a software developer focused on building practical, well-structured solutions designed for
+            the real world. I care about understanding each problem deeply before solving it, always aiming
+            to build efficient, clear, and purposeful systems.
+          </span>
+        </p>
+
+        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 36px; font-size: 1.02rem;">
+          <span class="es-only">
+            Me motiva trabajar con datos, optimizar procesos y desarrollar herramientas que realmente aporten
+            valor. Estoy en constante aprendizaje, mejorando mis habilidades para diseñar soluciones cada vez
+            más sólidas, escalables y bien construidas.
+          </span>
+          <span class="en-only">
+            I'm motivated by working with data, optimizing processes, and developing tools that truly add value.
+            I'm constantly learning, improving my skills to design increasingly solid, scalable, and
+            well-crafted solutions.
+          </span>
+        </p>
+
+        <ul class="focus-list">
+          <li class="focus-item"><span class="es-only">Sistemas que resuelven problemas reales</span><span class="en-only">Systems that solve real-world problems</span></li>
+          <li class="focus-item"><span class="es-only">Automatización de procesos manuales</span><span class="en-only">Automation of manual processes</span></li>
+          <li class="focus-item"><span class="es-only">Integración de datos en tiempo real</span><span class="en-only">Real-time data integration</span></li>
+          <li class="focus-item"><span class="es-only">Optimización de rendimiento y escalabilidad</span><span class="en-only">Performance optimization and scalability</span></li>
+        </ul>
+      </div>
+
+      <!-- Right: avatar + tech stack -->
+      <div class="reveal-right about-right">
+        <!-- Avatar -->
+        <div class="avatar-box">
+          <div class="avatar-blob avatar-blob-1"></div>
+          <div class="avatar-blob avatar-blob-2"></div>
+          <img src="/imagen_profile.png" alt="Edwin Velasquez" class="avatar-img" />
+        </div>
+
+        <!-- Tech stack -->
+        <div class="sketch-card" style="padding: 24px;">
+          <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 14px; letter-spacing: 0.08em; text-transform: uppercase;">
+            <span class="es-only">Tecnologías</span>
+            <span class="en-only">Tech Stack</span>
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            {stacks.map((s) => (
+              <span class="tech-badge" style={`color: ${s.color}; background: ${s.bg}; border-color: ${s.border};`}>
+                {s.label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-right { display: flex; flex-direction: column; gap: 28px; }
+  .focus-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .focus-item { color: var(--text-muted); font-size: 0.95rem; padding-left: 16px; position: relative; }
+  .focus-item::before { content: '▸'; position: absolute; left: 0; color: var(--purple); font-size: 0.8rem; top: 2px; }
+  .avatar-box { width: 100%; aspect-ratio: 4/3; border-radius: var(--radius); background: var(--card); border: 1.5px solid var(--card-border); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .avatar-blob { position: absolute; border-radius: 50%; }
+  .avatar-blob-1 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(139,92,246,0.15), transparent); top: 10%; left: 10%; }
+  .avatar-blob-2 { width: 160px; height: 160px; background: radial-gradient(circle, rgba(34,211,238,0.12), transparent); bottom: 10%; right: 10%; }
+  .avatar-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; position: relative; z-index: 1; }
+  @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+</style>

@@ -1,0 +1,169 @@
+---
+const certs = [
+  {
+    badge:       { es: 'Educación',  en: 'Education'  },
+    title:       { es: 'Ingeniería de Software (En curso, 10° semestre)', en: 'Software Engineering (In progress, 10th semester)' },
+    institution: 'Tecnológico de Antioquia',
+    date:        { es: 'Actualidad', en: 'Present' },
+    desc: {
+      es: 'Formación enfocada en desarrollo de software, arquitectura de sistemas, bases de datos y tecnologías web modernas.',
+      en: 'Training focused on software development, systems architecture, databases and modern web technologies.',
+    },
+    links:   [],
+    color:   '#8b5cf6', glow: 'rgba(139,92,246,0.25)', icon: '🎓',
+  },
+  {
+    badge:       { es: 'Tecnología', en: 'Technology' },
+    title:       { es: 'Técnico y Tecnólogo en Desarrollo de Software', en: 'Technical & Technologist in Software Development' },
+    institution: 'Tecnológico de Antioquia',
+    date:        { es: '2023 — 2024', en: '2023 — 2024' },
+    desc: {
+      es: 'Formación técnica y tecnológica en programación, lógica computacional y desarrollo de aplicaciones.',
+      en: 'Technical and technological training in programming, computational logic and application development.',
+    },
+    links: [
+      { label: { es: 'Ver diploma técnico',   en: 'Technical diploma'    }, file: '/certificados/diploma tecnico en sistemas.pdf' },
+      { label: { es: 'Ver diploma tecnólogo', en: 'Technologist diploma' }, file: '/certificados/diploma-tecnologo-edwin.pdf'     },
+    ],
+    color:   '#22d3ee', glow: 'rgba(34,211,238,0.25)', icon: '📜',
+  },
+  {
+    badge:       { es: 'Full Stack',  en: 'Full Stack' },
+    title:       { es: 'Formación ONE — Oracle Next Education', en: 'ONE Program — Oracle Next Education' },
+    institution: 'Alura Latam + Oracle',
+    date:        { es: '2022 — 2023', en: '2022 — 2023' },
+    desc: {
+      es: 'Formación intensiva en desarrollo frontend, lógica de programación, Git, responsive design y programación orientada a objetos.',
+      en: 'Intensive training in frontend development, programming logic, Git, responsive design and object-oriented programming.',
+    },
+    links: [
+      { label: { es: 'Ver certificado', en: 'View certificate' }, file: '/certificados/certificado multi cursos-alura.pdf' },
+    ],
+    color:   '#f59e0b', glow: 'rgba(245,158,11,0.25)', icon: '⚡',
+  },
+  {
+    badge:       { es: 'Ágil',  en: 'Agile' },
+    title:       { es: 'Scrum Fundamentals Certified', en: 'Scrum Fundamentals Certified' },
+    institution: 'Scrum Study',
+    date:        { es: 'Abr 2024', en: 'Apr 2024' },
+    desc: {
+      es: 'Certificación en metodologías ágiles, Scrum y organización de proyectos de desarrollo de software.',
+      en: 'Certification in agile methodologies, Scrum and software development project management.',
+    },
+    links: [
+      { label: { es: 'Ver credencial', en: 'View credential' }, file: '/certificados/Scrum Certificado.pdf' },
+    ],
+    color:   '#10b981', glow: 'rgba(16,185,129,0.25)', icon: '🔄',
+  },
+  {
+    badge:       { es: 'Registro', en: 'Registry' },
+    title:       { es: 'Registro Profesional Tecnológico', en: 'Professional Technology Registry' },
+    institution: 'COPNIA',
+    date:        { es: '2024', en: '2024' },
+    desc: {
+      es: 'Registro y validación profesional para el ejercicio tecnológico e ingeniería aplicada en Colombia.',
+      en: 'Professional registration and validation for technology and applied engineering practice in Colombia.',
+    },
+    links: [
+      { label: { es: 'Ver documento', en: 'View document' }, file: '/certificados/Edwin Velasquez Giraldo COPNIA.pdf' },
+    ],
+    color:   '#3b82f6', glow: 'rgba(59,130,246,0.25)', icon: '🏛️',
+  },
+];
+---
+
+<section id="certificates" style="background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); border-top: 1px solid rgba(139,92,246,0.15);">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 60px;" class="reveal">
+      <p class="section-label">
+        <span class="es-only">// credenciales</span>
+        <span class="en-only">// credentials</span>
+      </p>
+      <h2 class="section-title">
+        <span class="es-only">Certificados & Educación</span>
+        <span class="en-only">Certificates & Education</span>
+      </h2>
+    </div>
+
+    <div class="certs-grid">
+      {certs.map((c, i) => (
+        <div class="cert-card sketch-card reveal" style={`--cert-color: ${c.color}; --cert-glow: ${c.glow}; transition-delay: ${i * 60}ms;`}>
+          <div class="cert-strip" style={`background: linear-gradient(90deg, ${c.color}, transparent);`}></div>
+          <div class="cert-seal-outer" style={`border-color: ${c.color}30;`}></div>
+          <div class="cert-seal-inner" style={`border-color: ${c.color}20;`}></div>
+
+          <h3 class="cert-title">
+            <span class="es-only">{c.title.es}</span>
+            <span class="en-only">{c.title.en}</span>
+          </h3>
+          <p class="cert-institution">
+            <span style={`color: ${c.color};`}>{c.institution}</span>
+            <span class="cert-sep">—</span>
+            <span class="cert-date">
+              <span class="es-only">{c.date.es}</span>
+              <span class="en-only">{c.date.en}</span>
+            </span>
+          </p>
+
+          <p class="cert-desc">
+            <span class="es-only">{c.desc.es}</span>
+            <span class="en-only">{c.desc.en}</span>
+          </p>
+
+          {c.links.length > 0 && (
+            <div class="cert-footer">
+              {c.links.map((l) => (
+                <a
+                  href={l.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-btn"
+                  style={`border-color: ${c.color}50; color: ${c.color};`}
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                  <span class="es-only">{l.label.es}</span>
+                  <span class="en-only">{l.label.en}</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+  .cert-card { padding: 26px; position: relative; overflow: hidden; transition: all 0.3s ease !important; display: flex; flex-direction: column; }
+  .cert-card:hover { transform: translateY(-6px) rotate(0.5deg) !important; box-shadow: 0 16px 50px rgba(0,0,0,0.4), 0 0 30px var(--cert-glow) !important; border-color: color-mix(in srgb, var(--cert-color) 40%, transparent) !important; }
+
+  .cert-strip { position: absolute; top: 0; left: 0; right: 0; height: 3px; opacity: 0.7; transition: opacity 0.3s; }
+  .cert-card:hover .cert-strip { opacity: 1; }
+
+  .cert-seal-outer, .cert-seal-inner { position: absolute; border-radius: 50%; border: 2px dashed; }
+  .cert-seal-outer { bottom: -20px; right: -20px; width: 80px; height: 80px; opacity: 0.2; }
+  .cert-seal-inner { bottom: -10px; right: -10px; width: 50px; height: 50px; border-style: solid; opacity: 0.15; }
+  .cert-card:hover .cert-seal-outer { opacity: 0.6; }
+  .cert-card:hover .cert-seal-inner { opacity: 0.5; }
+
+  .cert-title { font-family: var(--font-body); font-size: 1.15rem; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 8px; }
+  .cert-institution { font-size: 0.82rem; font-weight: 500; margin-bottom: 12px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+  .cert-sep { color: var(--text-dim); }
+  .cert-date { color: var(--text-dim); }
+
+  .cert-desc { color: rgba(255,255,255,0.65); font-size: 0.85rem; line-height: 1.65; margin-bottom: 0; flex: 1; }
+
+  .cert-footer { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--card-border); display: flex; flex-wrap: wrap; gap: 8px; }
+  .cert-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 500;
+    border: 1px solid; background: transparent;
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cert-btn:hover { background: color-mix(in srgb, var(--cert-color) 12%, transparent); transform: translateX(2px); }
+</style>

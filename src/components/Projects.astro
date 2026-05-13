@@ -1,0 +1,268 @@
+---
+const projects = [
+  {
+    name: 'Energía Clara',
+    desc: {
+      es: 'Plataforma educativa sobre el mercado eléctrico colombiano con datos en tiempo real de SIMEM y XM, documentos CREG, noticias del sector y chatbot con IA (Gemini). Proyecto de tesis universitaria.',
+      en: 'Educational platform about the Colombian electricity market with real-time data from SIMEM and XM, CREG documents, sector news and an AI chatbot (Gemini). University thesis project.',
+    },
+    tags:      ['React', 'Node.js', 'MongoDB', 'Gemini API', 'Cloudflare'],
+    color:     '#22d3ee',
+    glow:      'rgba(34,211,238,0.3)',
+    accent:    'linear-gradient(135deg, #22d3ee, #0ea5e9)',
+    url:       'energiaclara.up.railway.app',
+    liveUrl:   'https://energiaclara.up.railway.app/',
+    githubUrl: 'https://github.com/edwinvg99/energia-clara',
+    image:     '/view_proyects/energia_clara.png',
+  },
+  {
+    name: 'CodeLegal',
+    desc: {
+      es: 'Plataforma e-commerce de cursos digitales de derecho con panel administrativo completo. Gestión de usuarios, cursos, módulos, matrículas y seguimiento de progreso.',
+      en: 'Digital law courses e-commerce platform with full admin dashboard. User management, courses, modules, enrollments and progress tracking.',
+    },
+    tags:      ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma'],
+    color:     '#8b5cf6',
+    glow:      'rgba(139,92,246,0.3)',
+    accent:    'linear-gradient(135deg, #8b5cf6, #6366f1)',
+    url:       'elprofecharles.up.railway.app',
+    liveUrl:   'https://elprofecharles.up.railway.app/',
+    videoUrl:  '#',
+    images:    ['/view_proyects/codelegal_user.png', '/view_proyects/codelegal_admin.png'],
+    imageLabels: ['Usuario', 'Admin'],
+  },
+  {
+    name: 'EnviaYa',
+    desc: {
+      es: 'Plataforma e-commerce completa con gestión de envíos, órdenes y productos. Incluye panel administrativo, backend API REST y frontend SPA.',
+      en: 'Full e-commerce platform with shipping, order and product management. Includes admin dashboard, REST API backend and SPA frontend.',
+    },
+    tags:      ['React', 'Node.js', 'TypeScript', 'MongoDB', 'Express'],
+    color:     '#f59e0b',
+    glow:      'rgba(245,158,11,0.3)',
+    accent:    'linear-gradient(135deg, #f59e0b, #ef4444)',
+    url:       'enviaya.up.railway.app',
+    liveUrl:   'https://enviaya.up.railway.app/',
+    githubUrl: 'https://github.com/edwinvg99/envia-Ya_v1',
+    image:     '/view_proyects/enviaYa.png',
+  },
+  {
+    name: 'BeatLog',
+   desc: {
+    es: 'App web conectada a la API de Spotify que permite reproducir música directamente desde Spotify mediante una integración personalizada, además de visualizar historial de reproducción, estadísticas de artistas y tendencias musicales personales.',
+    en: 'Web app connected to the Spotify API that allows users to play music directly from Spotify through a custom integration, while also visualizing playback history, artist statistics, and personal music trends.',
+  },
+    tags:      ['React', 'Spotify API', 'Node.js', 'animeJS', 'firebase'],
+    color:     '#1db954',
+    glow:      'rgba(29,185,84,0.3)',
+    accent:    'linear-gradient(135deg, #1db954, #191414)',
+    url:       'beatlog.up.railway.app',
+    liveUrl:   'https://beatlog.up.railway.app/',
+    githubUrl: 'https://github.com/edwinvg99/beatlog-spotify',
+    image:     '/view_proyects/beatlog.png',
+  },
+  {
+    name: 'Spectrum',
+    desc: {
+      es: 'App web moderna para visualizar estadísticas de jugadores de Valorant y explorar información de agentes. Incluye caché inteligente, actualizaciones automáticas en segundo plano y diseño responsivo.',
+      en: 'Modern web app to visualize Valorant player stats and explore agent information. Features smart caching, automatic background updates and responsive design.',
+    },
+    tags:      ['React 19', 'Vite', 'Tailwind CSS 4', 'Node.js', 'Express.js'],
+    color:     '#ff4655',
+    glow:      'rgba(255,70,85,0.3)',
+    accent:    'linear-gradient(135deg, #ff4655, #1a1a2e)',
+    url:       'spectrum.up.railway.app',
+    liveUrl:   'https://spectrum.up.railway.app/',
+    githubUrl: 'https://github.com/edwinvg99/spectrum',
+    image:     '/view_proyects/spectrum.png',
+  },
+  {
+    name: 'Pulsar API',
+    desc: {
+      es: 'Gateway de API REST y GraphQL de alto rendimiento con limitación de velocidad, middleware de autenticación y documentación OpenAPI automática.',
+      en: 'High-performance REST & GraphQL API gateway with rate limiting, auth middleware, and OpenAPI auto-docs.',
+    },
+    tags:    ['Go', 'GraphQL', 'Docker', 'Kubernetes'],
+    color:   '#10b981',
+    glow:    'rgba(16,185,129,0.3)',
+    accent:  'linear-gradient(135deg, #10b981, #22d3ee)',
+    url:     'pulsarapi.dev',
+    liveUrl:   '#',
+    githubUrl: '#',
+  },
+];
+---
+
+<section id="projects" style="background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%); border-top: 1px solid rgba(99,102,241,0.15);">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 60px;" class="reveal">
+      <p class="section-label">
+        <span class="es-only">// lo que he construido</span>
+        <span class="en-only">// what I've built</span>
+      </p>
+      <h2 class="section-title">
+        <span class="es-only">Proyectos</span>
+        <span class="en-only">Projects</span>
+      </h2>
+      <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto; font-size: 1rem;">
+        <span class="es-only">Una selección de lo que he desarrollado — desde proyectos personales hasta sistemas en producción.</span>
+        <span class="en-only">A selection of things I've shipped — from side projects to production systems.</span>
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map((p, i) => (
+        <article class="project-card sketch-card reveal" style={`--project-color: ${p.color}; --project-glow: ${p.glow}; --delay: ${i * 80}ms;`}>
+          <!-- Browser mockup -->
+          <div class="browser-chrome">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                {['#ff5f57','#febc2e','#28c840'].map((c) => (
+                  <div style={`width:10px;height:10px;border-radius:50%;background:${c};opacity:0.8;`}></div>
+                ))}
+              </div>
+              <div class="browser-url">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.5;">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                {p.url}
+              </div>
+            </div>
+
+            {p.images ? (
+              /* Multi-image gallery */
+              <div class="project-preview gallery-preview" data-images={JSON.stringify(p.images)}>
+                <img src={p.images[0]} alt={p.name} class="preview-img gallery-img" loading="lazy" />
+                <div class="gallery-tabs">
+                  {p.imageLabels?.map((label, idx) => (
+                    <button
+                      class={`gallery-tab${idx === 0 ? ' active' : ''}`}
+                      data-index={idx}
+                      style={`--tab-color: ${p.color};`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : p.image ? (
+              <div class="project-preview">
+                <img src={p.image} alt={p.name} class="preview-img" loading="lazy" />
+              </div>
+            ) : (
+              <div class="project-preview" style={`background:${p.accent};`}>
+                <div class="preview-skeleton">
+                  <div class="skel skel-1"></div>
+                  <div class="skel skel-2"></div>
+                  <div class="skel skel-3"></div>
+                  <div class="skel skel-4"></div>
+                </div>
+                <span class="preview-name">{p.name}</span>
+              </div>
+            )}
+          </div>
+
+          <!-- Card body -->
+          <div class="project-body">
+            <div>
+              <h3 class="project-name">{p.name}</h3>
+              <p class="project-desc">
+                <span class="es-only">{p.desc.es}</span>
+                <span class="en-only">{p.desc.en}</span>
+              </p>
+            </div>
+            <div class="project-tags">
+              {p.tags.map((t) => (
+                <span class="project-tag" style={`background:${p.color}18;border-color:${p.color}40;color:${p.color};`}>{t}</span>
+              ))}
+            </div>
+            <div class="project-actions">
+              <a href={p.liveUrl} target={p.liveUrl !== '#' ? '_blank' : undefined} rel="noopener noreferrer" class="btn-primary" style={`background:${p.accent};flex:1;justify-content:center;padding:9px 18px;font-size:0.82rem;`}>
+                <span class="es-only">Demo en Vivo</span>
+                <span class="en-only">Live Demo</span>
+              </a>
+
+              {p.videoUrl !== undefined ? (
+                <a href={p.videoUrl} target={p.videoUrl !== '#' ? '_blank' : undefined} rel="noopener noreferrer" class="btn-outline" style={`flex:1;justify-content:center;padding:9px 18px;font-size:0.82rem;border-color:${p.color}60;`}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
+                    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  <span class="es-only">Ver Demo</span>
+                  <span class="en-only">Watch Demo</span>
+                </a>
+              ) : (
+                <a href={p.githubUrl} target={p.githubUrl !== '#' ? '_blank' : undefined} rel="noopener noreferrer" class="btn-outline" style={`flex:1;justify-content:center;padding:9px 18px;font-size:0.82rem;border-color:${p.color}60;`}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                  <span class="es-only">Código</span>
+                  <span class="en-only">Code</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.gallery-preview').forEach((gallery) => {
+    const img    = gallery.querySelector('.gallery-img') as HTMLImageElement;
+    const tabs   = gallery.querySelectorAll('.gallery-tab');
+    const images = JSON.parse((gallery as HTMLElement).dataset.images || '[]');
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        img.src = images[i];
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  });
+</script>
+
+<style>
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+  .project-card { display: flex; flex-direction: column; transition-delay: var(--delay); }
+  .project-card:hover { transform: translateY(-8px) !important; box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px var(--project-glow) !important; border-color: color-mix(in srgb, var(--project-color) 40%, transparent) !important; }
+
+  .browser-chrome { background: var(--bg); border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; border-bottom: 1px solid var(--card-border); }
+  .browser-bar { padding: 10px 14px; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.03); }
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-url { flex: 1; background: rgba(255,255,255,0.06); border-radius: 6px; padding: 4px 10px; font-size: 0.72rem; color: var(--text-dim); font-family: monospace; display: flex; align-items: center; gap: 6px; }
+
+  .project-preview { height: 160px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .preview-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.4s ease; }
+  .project-card:hover .preview-img { transform: scale(1.04); }
+
+  /* Gallery */
+  .gallery-preview { flex-direction: column; align-items: stretch; }
+  .gallery-tabs { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
+  .gallery-tab {
+    padding: 3px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6);
+    cursor: pointer; transition: all 0.2s ease;
+  }
+  .gallery-tab.active { background: var(--tab-color); border-color: var(--tab-color); color: #fff; }
+  .gallery-tab:hover:not(.active) { border-color: rgba(255,255,255,0.35); color: #fff; }
+
+  /* Gradient mockup */
+  .preview-skeleton { position: absolute; inset: 0; opacity: 0.15; }
+  .skel { position: absolute; background: rgba(255,255,255,0.6); border-radius: 4px; }
+  .skel-1 { top: 20px; left: 20px; right: 80px; height: 12px; }
+  .skel-2 { top: 44px; left: 20px; width: 45%; height: 8px; background: rgba(255,255,255,0.4); }
+  .skel-3 { bottom: 20px; left: 20px; right: 20px; height: 60px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); }
+  .skel-4 { top: 20px; right: 20px; width: 50px; height: 50px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); }
+  .preview-name { font-family: var(--font-art); font-size: 1.8rem; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: -0.02em; text-shadow: 0 2px 20px rgba(0,0,0,0.3); position: relative; z-index: 1; }
+
+  .project-body { padding: 22px; display: flex; flex-direction: column; flex: 1; gap: 14px; }
+  .project-name { font-family: var(--font-art); font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .project-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-tag  { padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 500; border: 1px solid; }
+  .project-actions { display: flex; gap: 10px; margin-top: auto; }
+</style>

@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Edwin Velasquez — Desarrollador Full Stack',
+  description = 'Desarrollador Full Stack & Programador Creativo. Construyo experiencias digitales elegantes y eficientes.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d1117" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+
+    <!-- Apply saved language immediately to avoid flash -->
+    <script is:inline>
+      (function () {
+        const lang = localStorage.getItem('portfolio-lang') || 'es';
+        if (lang === 'en') document.documentElement.classList.add('lang-en');
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+      els.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
