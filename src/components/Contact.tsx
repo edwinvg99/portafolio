@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 
 // ── Web3Forms ─────────────────────────────────────────────────
-// Configura PUBLIC_WEB3FORMS_KEY en el archivo .env (nunca en el código)
-const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
-
+const WEB3FORMS_KEY =import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
 const WHATSAPP_NUMBER = '573042225380';
 const EMAIL = 'velasquezgiraldoedwin@gmail.com';
 const GITHUB          = 'https://github.com/edwinvg99';
@@ -160,6 +158,8 @@ export default function Contact() {
     try {
       const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
       const data = await res.json();
+      console.log('WEB3 RESPONSE:', data);
+
       if (data.success) {
         setStatus('success');
         recordSubmit();
@@ -265,6 +265,7 @@ export default function Contact() {
           <div className={`cq-form-wrap sketch-card ${rv}`}>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+
               {/* Honeypot — bots lo rellenan, Web3Forms lo rechaza automáticamente */}
               <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
 
