@@ -275,7 +275,7 @@ export default function Hero() {
 
           <p className="reveal" style={{ fontSize: '1.05rem', color: 'var(--text-muted)', maxWidth: '520px', lineHeight: 1.75, marginBottom: '40px' }}>
             {tx.desc1}{' '}
-            <span style={{ color: 'var(--purple)', fontWeight: 500 }}>{tx.creativity}</span>{' '}
+            <span style={{ color: 'var(--cyan)', fontWeight: 500 }}>{tx.creativity}</span>{' '}
             {tx.and}{' '}
             <span style={{ color: 'var(--cyan)', fontWeight: 500 }}>{tx.engineering}</span>.
           </p>

@@ -1,17 +1,7 @@
 ---
 const stacks = [
-  { label: 'React',      color: '#61dafb', bg: 'rgba(97,218,251,0.1)',  border: 'rgba(97,218,251,0.3)'  },
-  { label: 'TypeScript', color: '#3178c6', bg: 'rgba(49,120,198,0.1)',  border: 'rgba(49,120,198,0.3)'  },
-  { label: 'Node.js',    color: '#68a063', bg: 'rgba(104,160,99,0.1)',  border: 'rgba(104,160,99,0.3)'  },
-  { label: 'Python',     color: '#ffd43b', bg: 'rgba(255,212,59,0.1)',  border: 'rgba(255,212,59,0.3)'  },
-  { label: 'PostgreSQL', color: '#336791', bg: 'rgba(51,103,145,0.12)', border: 'rgba(51,103,145,0.4)'  },
-  { label: 'Docker',     color: '#2496ed', bg: 'rgba(36,150,237,0.1)',  border: 'rgba(36,150,237,0.3)'  },
-  { label: 'AWS',        color: '#ff9900', bg: 'rgba(255,153,0,0.1)',   border: 'rgba(255,153,0,0.3)'   },
-  { label: 'GraphQL',    color: '#e535ab', bg: 'rgba(229,53,171,0.1)',  border: 'rgba(229,53,171,0.3)'  },
-  { label: 'Next.js',    color: '#fff',    bg: 'rgba(255,255,255,0.07)',border: 'rgba(255,255,255,0.2)' },
-  { label: 'Tailwind',   color: '#38bdf8', bg: 'rgba(56,189,248,0.1)',  border: 'rgba(56,189,248,0.3)'  },
-  { label: 'Redis',      color: '#ff4438', bg: 'rgba(255,68,56,0.1)',   border: 'rgba(255,68,56,0.3)'   },
-  { label: 'Rust',       color: '#f74c00', bg: 'rgba(247,76,0,0.1)',    border: 'rgba(247,76,0,0.3)'    },
+  'React', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'Docker',
+  'AWS', 'GraphQL', 'Next.js', 'Tailwind', 'Redis', 'Rust',
 ];
 
 ---
@@ -26,7 +16,7 @@ const stacks = [
           <span class="es-only">// sobre mí</span>
           <span class="en-only">// about me</span>
         </p>
-        <h2 class="section-title">
+        <h2 class="section-title" style="background: none; -webkit-text-fill-color: var(--cyan); color: var(--cyan);">
           <span class="es-only">El humano detrás<br/>del teclado</span>
           <span class="en-only">The human behind<br/>the keyboard</span>
         </h2>
@@ -82,8 +72,8 @@ const stacks = [
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 8px;">
             {stacks.map((s) => (
-              <span class="tech-badge" style={`color: ${s.color}; background: ${s.bg}; border-color: ${s.border};`}>
-                {s.label}
+              <span class="tech-badge" style="color: var(--cyan); background: rgba(34,211,238,0.07); border-color: rgba(34,211,238,0.22);">
+                {s}
               </span>
             ))}
           </div>

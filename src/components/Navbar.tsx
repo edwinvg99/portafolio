@@ -144,55 +144,56 @@ export default function Navbar() {
         {langToggle}
       </div>
 
-      {/* Mobile: lang + hamburger */}
-      <div style={{ display: 'flex', gap: '10px', alignItems: 'center', justifySelf: 'end' }} className="nav-mobile-actions">
-        <div style={{ display: 'flex', gap: '2px' }}>
-          {(['es', 'en'] as const).map((l) => (
-            <button
-              key={l}
-              onClick={() => setLang(l)}
-              style={{
-                background: lang === l ? 'rgba(139,92,246,0.2)' : 'none',
-                border: 'none',
-                borderRadius: '50%',
-                cursor: lang === l ? 'default' : 'pointer',
-                fontSize: '1.2rem',
-                padding: '3px',
-                opacity: lang === l ? 1 : 0.45,
-                transition: 'all 0.2s ease',
-              }}
-              aria-label={l === 'es' ? 'Español' : 'English'}
-            >
-              {l === 'es' ? '🇨🇴' : '🇺🇸'}
-            </button>
-          ))}
-        </div>
-        <button
-          className="nav-hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{
-            display: 'none',
-            background: 'none', border: 'none', cursor: 'pointer',
-            color: 'var(--text)', padding: '4px',
-          }}
-          aria-label="Toggle menu"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {menuOpen ? (
-              <>
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </>
-            ) : (
-              <>
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </>
-            )}
-          </svg>
-        </button>
+      {/* Mobile: lang toggle — center (col 2) */}
+      <div className="nav-mobile-lang" style={{ display: 'none', justifySelf: 'center', gridColumn: 2, gridRow: 1 }}>
+        {(['es', 'en'] as const).map((l) => (
+          <button
+            key={l}
+            onClick={() => setLang(l)}
+            style={{
+              background: lang === l ? 'rgba(139,92,246,0.2)' : 'none',
+              border: 'none',
+              borderRadius: '50%',
+              cursor: lang === l ? 'default' : 'pointer',
+              fontSize: '1.2rem',
+              padding: '3px',
+              opacity: lang === l ? 1 : 0.45,
+              transition: 'all 0.2s ease',
+            }}
+            aria-label={l === 'es' ? 'Español' : 'English'}
+          >
+            {l === 'es' ? '🇨🇴' : '🇺🇸'}
+          </button>
+        ))}
       </div>
+
+      {/* Mobile: hamburger — right (col 3) */}
+      <button
+        className="nav-hamburger"
+        onClick={() => setMenuOpen(!menuOpen)}
+        style={{
+          display: 'none',
+          background: 'none', border: 'none', cursor: 'pointer',
+          color: 'var(--text)', padding: '4px',
+          justifySelf: 'end', gridColumn: 3, gridRow: 1,
+        }}
+        aria-label="Toggle menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          {menuOpen ? (
+            <>
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </>
+          ) : (
+            <>
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </>
+          )}
+        </svg>
+      </button>
 
       {/* Mobile menu */}
       {menuOpen && (
@@ -232,11 +233,12 @@ export default function Navbar() {
       <style>{`
         @media (max-width: 768px) {
           .nav-desktop { display: none !important; }
-          .nav-mobile-actions { display: flex !important; }
-          .nav-hamburger { display: block !important; }
+          .nav-mobile-lang { display: flex !important; align-items: center; gap: 2px; }
+          .nav-hamburger { display: flex !important; align-items: center; }
         }
         @media (min-width: 769px) {
-          .nav-mobile-actions { display: none !important; }
+          .nav-mobile-lang { display: none !important; }
+          .nav-hamburger { display: none !important; }
         }
       `}</style>
     </nav>

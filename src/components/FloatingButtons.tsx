@@ -89,6 +89,37 @@ export default function FloatingButtons() {
           <polyline points="22,6 12,13 2,6" />
         </svg>
       </a>
+
+      {/* Back to top */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        title="Volver al inicio"
+        aria-label="Volver al inicio"
+        style={{
+          ...base,
+          background: 'rgba(255,255,255,0.06)',
+          border: '1px solid rgba(255,255,255,0.12)',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
+          backdropFilter: 'blur(8px)',
+          color: 'white',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform   = 'scale(1.15)';
+          e.currentTarget.style.background  = 'rgba(139,92,246,0.2)';
+          e.currentTarget.style.borderColor = 'rgba(139,92,246,0.5)';
+          e.currentTarget.style.boxShadow   = '0 6px 24px rgba(139,92,246,0.35)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform   = 'scale(1)';
+          e.currentTarget.style.background  = 'rgba(255,255,255,0.06)';
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+          e.currentTarget.style.boxShadow   = '0 4px 16px rgba(0,0,0,0.3)';
+        }}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </button>
     </div>
   );
 }
