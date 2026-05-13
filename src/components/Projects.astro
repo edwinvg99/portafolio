@@ -120,29 +120,29 @@ const projects = [
     githubUrl:'https://github.com/edwinvg99/spectrum',
     image:    '/view_proyects/spectrum.png',
   },
-  {
-    name: 'Pulsar API',
-    desc: {
-      es: 'Gateway de API REST y GraphQL de alto rendimiento con limitación de velocidad, middleware de autenticación JWT y documentación OpenAPI generada automáticamente desde el código.',
-      en: 'High-performance REST & GraphQL API gateway with rate limiting, JWT authentication middleware, and OpenAPI documentation auto-generated from source code.',
-    },
-    challenges: {
-      es: 'Implementar el algoritmo de token bucket con precisión bajo alta concurrencia fue el reto central, ya que las condiciones de carrera podían permitir ráfagas sobre el límite. Generar documentación OpenAPI desde Go requirió diseñar convenciones de anotaciones propias.',
-      en: 'Implementing the token bucket algorithm accurately under high concurrency was the core challenge, as race conditions could allow bursts above the limit. Auto-generating OpenAPI docs from Go required custom annotation conventions.',
-    },
-    learnings: {
-      es: 'Algoritmos de rate limiting (token bucket y leaky bucket), concurrencia y goroutines en Go, patrones de API gateway con middleware encadenado y despliegues en Kubernetes con rolling updates.',
-      en: 'Rate limiting algorithms (token bucket and leaky bucket), Go concurrency and goroutines, API gateway patterns with chained middleware, and Kubernetes deployments with rolling updates.',
-    },
-    tags: ['Go', 'GraphQL', 'Docker', 'Kubernetes'],
-    color:    '#34d399',
-    colorAlt: '#6ee7b7',
-    glow:     'rgba(52,211,153,0.2)',
-    accent:   'linear-gradient(135deg, #059669, #34d399)',
-    url:      'pulsarapi.dev',
-    liveUrl:  '#',
-    githubUrl:'#',
-  },
+  // {
+  //   name: 'Pulsar API',
+  //   desc: {
+  //     es: 'Gateway de API REST y GraphQL de alto rendimiento con limitación de velocidad, middleware de autenticación JWT y documentación OpenAPI generada automáticamente desde el código.',
+  //     en: 'High-performance REST & GraphQL API gateway with rate limiting, JWT authentication middleware, and OpenAPI documentation auto-generated from source code.',
+  //   },
+  //   challenges: {
+  //     es: 'Implementar el algoritmo de token bucket con precisión bajo alta concurrencia fue el reto central, ya que las condiciones de carrera podían permitir ráfagas sobre el límite. Generar documentación OpenAPI desde Go requirió diseñar convenciones de anotaciones propias.',
+  //     en: 'Implementing the token bucket algorithm accurately under high concurrency was the core challenge, as race conditions could allow bursts above the limit. Auto-generating OpenAPI docs from Go required custom annotation conventions.',
+  //   },
+  //   learnings: {
+  //     es: 'Algoritmos de rate limiting (token bucket y leaky bucket), concurrencia y goroutines en Go, patrones de API gateway con middleware encadenado y despliegues en Kubernetes con rolling updates.',
+  //     en: 'Rate limiting algorithms (token bucket and leaky bucket), Go concurrency and goroutines, API gateway patterns with chained middleware, and Kubernetes deployments with rolling updates.',
+  //   },
+  //   tags: ['Go', 'GraphQL', 'Docker', 'Kubernetes'],
+  //   color:    '#34d399',
+  //   colorAlt: '#6ee7b7',
+  //   glow:     'rgba(52,211,153,0.2)',
+  //   accent:   'linear-gradient(135deg, #059669, #34d399)',
+  //   url:      'pulsarapi.dev',
+  //   liveUrl:  '#',
+  //   githubUrl:'#',
+  // },
 ];
 
 const N = projects.length;

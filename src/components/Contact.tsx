@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 
 // ── Web3Forms ─────────────────────────────────────────────────
@@ -6,7 +6,7 @@ import { useLanguage } from '../hooks/useLanguage';
 const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
 
 const WHATSAPP_NUMBER = '573042225380';
-const EMAIL           = 'velasquezgiraldoedwin@gmail.com';
+const EMAIL = 'velasquezgiraldoedwin@gmail.com';
 const GITHUB          = 'https://github.com/edwinvg99';
 
 const WA_MSG = {
@@ -79,16 +79,6 @@ const T = {
   },
 };
 
-const reasonIcons = [
-  // chat bubble
-  <svg key="0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>,
-  // heart
-  <svg key="1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>,
-  // zap
-  <svg key="2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
-  // code
-  <svg key="3" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
-];
 
 const COOLDOWN_MS  = 60_000;   // 1 min entre envíos
 const MAX_PER_HOUR = 5;        // máximo 5 por hora
@@ -126,14 +116,21 @@ function recordSubmit() {
 
 export default function Contact() {
   const { lang } = useLanguage();
-  const tx       = T[lang];
-  const [status,    setStatus]    = useState<'idle' | 'loading' | 'success' | 'error' | 'rate_limited'>('idle');
-  const [cooldown,  setCooldown]  = useState(0);
+  const tx        = T[lang];
+  const [status,   setStatus]  = useState<'idle' | 'loading' | 'success' | 'error' | 'rate_limited'>('idle');
+  const [cooldown, setCooldown] = useState(0);
+  const [revealed, setRevealed] = useState(false);
 
+  // The Layout's IntersectionObserver observes SSR nodes that React replaces on hydration.
+  // Since Contact is always below the fold, revealing on mount is safe — the user only
+  // sees this section after scrolling, so the CSS transition plays naturally.
+  useEffect(() => { setRevealed(true); }, []);
+
+  const rv = revealed ? 'reveal visible' : 'reveal';
   const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WA_MSG[lang])}`;
 
   const quickLinks = [
-    { label: tx.emailLabel, value: 'vg.edwin@gmail.com', href: `mailto:${EMAIL}`, color: '#22d3ee',
+    { label: tx.emailLabel, value: EMAIL, href: `mailto:${EMAIL}`, color: '#22d3ee',
       icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> },
     { label: tx.waLabel,    value: '+57 304 222 5380', href: waHref,              color: '#25d366',
       icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> },
@@ -231,7 +228,7 @@ export default function Contact() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
         {/* ── Header ──────────────────────────────────────────── */}
-        <div style={{ textAlign: 'center', marginBottom: '52px' }} className="reveal">
+        <div style={{ textAlign: 'center', marginBottom: '52px' }} className={rv}>
           <p className="section-label">
             <span className="es-only">{T.es.sectionLabel}</span>
             <span className="en-only">{T.en.sectionLabel}</span>
@@ -247,7 +244,7 @@ export default function Contact() {
         </div>
 
         {/* ── Quick links ──────────────────────────────────────── */}
-        <div className="cq-links reveal">
+        <div className={`cq-links ${rv}`}>
           {quickLinks.map((q) => (
             <a key={q.label} href={q.href} target="_blank" rel="noopener noreferrer"
                className="cq-link" style={{ '--qc': q.color } as React.CSSProperties}>
@@ -263,18 +260,9 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* ── Main grid ────────────────────────────────────────── */}
+        {/* ── Form (full width) ────────────────────────────────── */}
         <div className="cq-grid">
-
-          {/* Form */}
-          <div className="cq-form-wrap sketch-card reveal">
-            <h3 style={{ fontFamily: 'var(--font-art)', fontSize: '1.4rem', color: 'var(--text)', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-              </svg>
-              <span className="es-only">{T.es.formTitle}</span>
-              <span className="en-only">{T.en.formTitle}</span>
-            </h3>
+          <div className={`cq-form-wrap sketch-card ${rv}`}>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {/* Honeypot — bots lo rellenan, Web3Forms lo rechaza automáticamente */}
@@ -318,17 +306,16 @@ export default function Contact() {
                 type="submit"
                 disabled={status === 'loading'}
                 style={{
-                  padding: '12px 28px', borderRadius: '50px', border: 'none', cursor: status === 'loading' ? 'wait' : 'pointer',
-                  background: 'linear-gradient(135deg, #0ea5e9, #22d3ee)',
-                  color: '#fff', fontWeight: 600, fontSize: '0.95rem',
-                  boxShadow: '0 4px 20px rgba(34,211,238,0.3)',
-                  transition: 'transform 0.2s, box-shadow 0.2s, opacity 0.2s',
-                  opacity: status === 'loading' ? 0.7 : 1,
-                  fontFamily: 'var(--font-body)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                  background: 'none', border: 'none', padding: '8px 0',
+                  cursor: status === 'loading' ? 'wait' : 'pointer',
+                  fontFamily: 'var(--font-art)', fontSize: '2rem',
+                  color: 'var(--cyan)', opacity: status === 'loading' ? 0.5 : 1,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+                  transition: 'transform 0.2s, opacity 0.2s',
+                  width: '100%',
                 }}
-                onMouseEnter={(e) => { if (status !== 'loading') { e.currentTarget.style.transform = 'scale(1.03)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(34,211,238,0.45)'; }}}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(34,211,238,0.3)'; }}
+                onMouseEnter={(e) => { if (status !== 'loading') e.currentTarget.style.transform = 'translateX(6px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateX(0)'; }}
               >
                 {status === 'loading' ? (
                   <>
@@ -341,7 +328,7 @@ export default function Contact() {
                   </>
                 ) : (
                   <>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                       <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
                     </svg>
                     <span className="es-only">{T.es.send}</span>
@@ -375,45 +362,6 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Info panel */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div className="sketch-card reveal" style={{ padding: '28px' }}>
-              <h3 style={{ fontFamily: 'var(--font-art)', fontSize: '1.25rem', color: 'var(--text)', marginBottom: '20px' }}>
-                <span className="es-only">{T.es.whyTitle}</span>
-                <span className="en-only">{T.en.whyTitle}</span>
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {tx.reasons.map((r, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <div style={{ width: 36, height: 36, borderRadius: '10px', background: 'rgba(34,211,238,0.1)', border: '1px solid rgba(34,211,238,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: 'var(--cyan)' }}>
-                      {reasonIcons[i]}
-                    </div>
-                    <div>
-                      <p style={{ color: 'var(--text)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '2px' }}>{r.title}</p>
-                      <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>{r.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA card */}
-            <div className="reveal" style={{ padding: '24px', borderRadius: 'var(--radius)', background: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(34,211,238,0.08))', border: '1px solid rgba(34,211,238,0.25)', textAlign: 'center' }}>
-              <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(34,211,238,0.15)', border: '1px solid rgba(34,211,238,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px', color: 'var(--cyan)' }}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-              </div>
-              <p style={{ fontFamily: 'var(--font-art)', fontSize: '1.1rem', color: 'var(--text)', marginBottom: '6px' }}>
-                <span className="es-only">{T.es.ctaTitle}</span>
-                <span className="en-only">{T.en.ctaTitle}</span>
-              </p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-                <span className="es-only">{T.es.ctaDesc} 🚀</span>
-                <span className="en-only">{T.en.ctaDesc} 🚀</span>
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* ── Footer ───────────────────────────────────────────── */}
@@ -482,17 +430,23 @@ export default function Contact() {
 
         .cq-grid {
           display: grid;
-          grid-template-columns: 1fr 380px;
+          grid-template-columns: 1fr;
           gap: 28px;
-          align-items: start;
         }
         .cq-form-wrap { padding: 32px; }
+
+        /* override global sketch-card purple glow with cyan */
+        #contact .sketch-card:hover {
+          box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 28px rgba(34,211,238,0.25) !important;
+        }
+        #contact .sketch-card::before {
+          background: linear-gradient(135deg, rgba(14,165,233,0.06), rgba(34,211,238,0.03)) !important;
+        }
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
         @media (max-width: 900px) {
           .cq-links { grid-template-columns: 1fr; }
-          .cq-grid  { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
           .cq-form-row { grid-template-columns: 1fr !important; }
