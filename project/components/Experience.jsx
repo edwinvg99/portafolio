@@ -100,6 +100,18 @@ const Experience = () => {
           #experience .container > div > div > div {
             grid-template-columns: 24px 1fr !important;
           }
+          #experience .container > div > div > div > div {
+            order: unset !important;
+            padding-left: 16px !important;
+            padding-right: 0 !important;
+            text-align: left !important;
+          }
+          #experience .exp-period-mobile {
+            display: none !important;
+          }
+          #experience .exp-card-wrapper {
+            display: block !important;
+          }
         }
       `}</style>
     </section>
