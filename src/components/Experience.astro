@@ -244,8 +244,10 @@ const jobs = [
   @media (max-width: 768px) {
     .timeline-line { left: 16px; }
     .timeline-row  { grid-template-columns: 32px 1fr; }
-    .tl-left       { display: none; }
-    .tl-right      { padding-left: 16px; grid-column: 2; }
+    .tl-has-date   { display: none; }
+    .tl-has-card   { padding-left: 16px; padding-right: 0; text-align: left; grid-column: 2; }
+    .tl-right.tl-has-card { padding-left: 16px; grid-column: 2; }
+    .tl-left.tl-has-card  { padding-left: 16px; padding-right: 0; text-align: left; grid-column: 2; grid-row: 1; }
     .tl-center     { justify-content: flex-start; }
   }
 </style>
