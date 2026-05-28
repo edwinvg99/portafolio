@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edwin Velasquez Giraldo — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #000;
+      --muted: #333;
+      --rule: #000;
+      --serif: 'EB Garamond', 'Garamond', 'Times New Roman', Times, serif;
+    }
+
+    html, body {
+      background: #e9e9ea;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 9.8pt;
+      line-height: 1.24;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ── A4 page (visible while editing in browser) ──────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 10mm 14mm;
+      margin: 14mm auto;
+      background: #fff;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .name {
+      font-size: 20pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-align: center;
+      line-height: 1.05;
+    }
+    .contact {
+      text-align: center;
+      font-size: 8.8pt;
+      margin-top: 3px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .contact a { color: var(--muted); text-decoration: none; }
+    .contact .sep { margin: 0 4px; opacity: 0.55; }
+
+    .summary {
+      text-align: justify;
+      margin-top: 6px;
+      font-size: 10pt;
+      line-height: 1.3;
+    }
+
+    /* ── Section heading ─────────────────────────────────────── */
+    h2.section {
+      font-size: 11pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      border-bottom: 0.6pt solid var(--rule);
+      padding-bottom: 2px;
+      margin-top: 5px;
+      margin-bottom: 3px;
+    }
+
+    /* ── Entries ─────────────────────────────────────────────── */
+    .entry {
+      margin-bottom: 3px;
+    }
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .entry-title {
+      font-weight: 700;
+      font-size: 10.5pt;
+    }
+    .entry-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .entry-title a:hover { text-decoration: underline; }
+    .entry-meta {
+      font-size: 9.5pt;
+      white-space: nowrap;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .entry-sub {
+      font-style: italic;
+      font-size: 10pt;
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    ul.bullets {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 2px;
+    }
+    ul.bullets li {
+      position: relative;
+      padding-left: 11px;
+      margin-bottom: 0;
+      line-height: 1.25;
+    }
+    ul.bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      top: 0;
+    }
+
+    /* ── Skills grid ─────────────────────────────────────────── */
+    .skills {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      row-gap: 2px;
+      column-gap: 10px;
+      margin-top: 2px;
+    }
+    .skills dt {
+      font-weight: 700;
+      font-size: 10pt;
+    }
+    .skills dd { font-size: 10pt; line-height: 1.3; }
+
+    /* ── Misc ────────────────────────────────────────────────── */
+    .inline-list { font-size: 10pt; }
+    .lang-row { display: flex; gap: 18px; flex-wrap: wrap; font-size: 10pt; }
+    .lang-row span b { font-weight: 700; }
+
+    /* ── Print ───────────────────────────────────────────────── */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .page {
+        margin: 0;
+        padding: 10mm 14mm;
+        width: 210mm;
+        min-height: 297mm;
+        box-shadow: none;
+      }
+      a { color: var(--ink); }
+      /* Hide print helper */
+      .print-helper { display: none !important; }
+    }
+
+    /* ── On-screen print hint ───────────────────────────────── */
+    .print-helper {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      background: #0d1117;
+      color: #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+    }
+    .print-helper button {
+      background: #38bdf8;
+      border: none;
+      color: #0d1117;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .print-helper button:hover { background: #7dd3fc; }
+  </style>
+</head>
+<body>
+
+  <main class="page">
+
+    <!-- ═════════════════════ HEADER ═════════════════════ -->
+    <header>
+      <h1 class="name">Edwin Velasquez Giraldo</h1>
+      <p class="contact">
+        Medellín, Colombia
+        <span class="sep">|</span>
+        +57 304 222 5380
+        <span class="sep">|</span>
+        <a href="mailto:velasquezgiraldoedwin@gmail.com">velasquezgiraldoedwin@gmail.com</a>
+        <span class="sep">|</span>
+        <a href="https://edwin-portafolio.up.railway.app/#about">edwin-portafolio.up.railway.app</a>
+        <!-- <span class="sep">|</span> -->
+        <!-- <a href="https://github.com/edwinvg99">github.com/edwinvg99</a> -->
+        <span class="sep">|</span>
+        <a href="https://linkedin.com/in/edwinvg99">linkedin.com/in/edwinvg99</a>
+      </p>
+
+      <p class="summary">
+        Desarrollador Full Stack con experiencia en plataformas web, automatización de procesos
+        e integración de APIs y servicios cloud. Enfocado en construir soluciones eficientes,
+        escalables y orientadas a resolver problemas reales del negocio, con sólida base en
+        arquitectura de software, bases de datos y experiencia de usuario.
+      </p>
+    </header>
+
+    <!-- ═════════════════════ EDUCATION ═════════════════════ -->
+    <section>
+      <h2 class="section">Educación</h2>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Tecnológico de Antioquia — Institución Universitaria</span>
+          <span class="entry-meta">Medellín · Actualidad</span>
+        </div>
+        <div class="entry-sub">Ingeniería de Software · 10.° semestre (en curso)</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Tecnológico de Antioquia — Institución Universitaria</span>
+          <span class="entry-meta">Medellín · 2023 – 2024</span>
+        </div>
+        <div class="entry-sub">Técnico y Tecnólogo en Desarrollo de Software</div>
+      </div>
+
+    </section>
+
+    <!-- ═════════════════════ EXPERIENCE ═════════════════════ -->
+    <section>
+      <h2 class="section">Experiencia Profesional</h2>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">El Derecho Para Todos</span>
+          <span class="entry-meta">Medellín · jun. 2025 – Actualidad</span>
+        </div>
+        <div class="entry-sub">Desarrollador Full Stack &amp; Automatización</div>
+        <ul class="bullets">
+          <li>Diseño y desarrollo de plataformas web internas y externas para optimizar
+              procesos operativos y mejorar la experiencia digital de usuarios y clientes.</li>
+          <li>Automatización de flujos administrativos mediante integraciones con APIs
+              y servicios cloud.</li>
+          <li>Construcción de paneles administrativos, formularios y herramientas internas;
+              despliegue y mantenimiento de soluciones en producción.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Consultoría Digital — Campaña Política Nacional</span>
+          <span class="entry-meta">Colombia · 2025</span>
+        </div>
+        <div class="entry-sub">Desarrollador Full Stack — Proyecto independiente</div>
+        <ul class="bullets">
+          <li>Desarrollo de sitios web y landing pages con alcance nacional y alto volumen
+              de tráfico simultáneo.</li>
+          <li>Implementación de formularios y sistemas de captura de datos integrados con
+              Google Sheets API para procesamiento en tiempo real.</li>
+          <li>Automatización de procesos de registro, validación y seguimiento de usuarios
+              registrados a nivel nacional.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Freelance — Desarrollador Full Stack</span>
+          <span class="entry-meta">Remoto · 2022 – Actualidad</span>
+        </div>
+        <ul class="bullets">
+          <li>Sitios web, plataformas personalizadas y dashboards para pequeñas empresas
+              y clientes independientes.</li>
+          <li>Automatización de procesos, generación de reportes e integraciones con APIs
+              y bases de datos.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Algar Tech — SAP SURA</span>
+          <span class="entry-meta">Medellín · 2023</span>
+        </div>
+        <div class="entry-sub">Practicante de Soporte TI</div>
+        <ul class="bullets">
+          <li>Gestión y resolución de tickets de soporte de plataformas empresariales SAP.</li>
+          <li>Documentación de incidentes recurrentes y escalamiento a equipos de
+              segundo nivel.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═════════════════════ KEY PROJECTS ═════════════════════ -->
+    <section>
+      <h2 class="section">Proyectos Destacados</h2>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title"><a href="https://energiaclara.up.railway.app/">Energía Clara — Plataforma educativa del mercado eléctrico</a></span>
+          <span class="entry-meta">2024 – 2025</span>
+        </div>
+        <ul class="bullets">
+          <li>Integración con APIs de XM y SIMEM superando geo-restricciones mediante
+              funciones <em>serverless</em>.</li>
+          <li>Chatbot educativo con LLM, formularios tipo examen y generación de
+              certificados en PDF.</li>
+          <li>Stack: React, Node.js, MongoDB, APIs de IA, serverless en la nube.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title"><a href="https://elprofecharles.up.railway.app/">CodeLegal — E-commerce de cursos digitales</a></span>
+          <span class="entry-meta">2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Sistema multi-rol (estudiante, instructor, administrador) con migración
+              controlada de usuarios desde una plataforma en producción sin pérdida de datos.</li>
+          <li>Panel administrativo completo, gestión de matrículas y seguimiento de
+              progreso por módulo.</li>
+          <li>Stack: React, TypeScript, Node.js, PostgreSQL, Prisma.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title"><a href="https://enviaya.up.railway.app/">EnviaYa — Plataforma e-commerce con gestión de envíos</a></span>
+          <span class="entry-meta">2024</span>
+        </div>
+        <ul class="bullets">
+          <li>Gestión de stock con reserva temporal y manejo de concurrencia para evitar
+              sobreventa durante el proceso de compra.</li>
+          <li>Sincronización en tiempo real mediante webhooks y trazabilidad completa
+              del ciclo de vida de cada orden.</li>
+          <li>Stack: React, Node.js, TypeScript, MongoDB, Express.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═════════════════════ SKILLS ═════════════════════ -->
+    <section>
+      <h2 class="section">Habilidades Técnicas</h2>
+      <dl class="skills">
+        <dt>Lenguajes</dt>
+        <dd>JavaScript · TypeScript · Python · SQL</dd>
+
+        <dt>Front-End</dt>
+        <dd>React · Next.js · Astro · HTML · CSS · Tailwind CSS · Anime.js</dd>
+
+        <dt>Back-End</dt>
+        <dd>Node.js · Express · Django · APIs REST · Funciones serverless</dd>
+
+        <dt>Bases de Datos</dt>
+        <dd>PostgreSQL · MongoDB · MySQL · Prisma ORM · Firebase</dd>
+
+        <dt>Cloud &amp; DevOps</dt>
+        <dd>Cloudflare · Railway · Vercel · Docker · Git · CI/CD (Jenkins · GitHub Actions) · ngrok</dd>
+
+        <dt>Metodologías</dt>
+        <dd>Scrum · Git Flow · Diseño UX/UI orientado a usuario</dd>
+      </dl>
+    </section>
+
+    <!-- ═════════════════════ CERTIFICATIONS & LANGUAGES ═════════════════════ -->
+    <section>
+      <h2 class="section">Certificaciones e Idiomas</h2>
+
+      <ul class="bullets">
+        <li><b>Scrum Fundamentals Certified (SFC)</b> — ScrumStudy, abril 2024.</li>
+        <li><b>Registro Profesional Tecnológico</b> — COPNIA, 2024.</li>
+        <li><b>Oracle Next Education (ONE)</b> — Programa Full Stack, Oracle &amp; Alura Latam, 2022–2023.</li>
+        <li><b>Español:</b> nativo &nbsp;·&nbsp; <b>Inglés:</b> básico (A2) — lectura técnica</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ── On-screen helper (hidden on print) ───────────────── -->
+  <div class="print-helper">
+    Listo para exportar
+    <button onclick="window.print()">Imprimir / Guardar PDF</button>
+  </div>
+
+</body>
+</html>

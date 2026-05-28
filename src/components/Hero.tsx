@@ -293,7 +293,7 @@ export default function Hero() {
 
             {/* Download CV */}
             <a
-              href="/cv.pdf"
+              href="/edwinVelasquezCV.pdf"
               download
               className="btn-outline"
               style={{ borderColor: 'rgba(34,211,238,0.4)', gap: '8px' }}
