@@ -1,7 +1,11 @@
 ---
 const stacks = [
-  'React', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'Docker',
-  'AWS', 'GraphQL', 'Next.js', 'Tailwind', 'Redis', 'Rust',
+  'JavaScript', 'TypeScript', 'Python', 'SQL',
+  'React', 'Next.js', 'Astro', 'HTML', 'CSS', 'Tailwind CSS',
+  'Node.js', 'Express', 'Django', 'REST APIs', 'Serverless Functions',
+  'PostgreSQL', 'MongoDB', 'MySQL', 'Prisma ORM', 'Firebase',
+  'Cloudflare', 'Railway', 'Vercel', 'Docker', 'Git', 'GitHub Actions', 'CI/CD', 'ngrok',
+  'Webhooks', 'Google API', 'JWT',
 ];
 
 ---
@@ -65,16 +69,14 @@ const stacks = [
         </div>
 
         <!-- Tech stack -->
-        <div class="sketch-card" style="padding: 24px;">
-          <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 14px; letter-spacing: 0.08em; text-transform: uppercase;">
+        <div id="techStack" class="tech-stack-card">
+          <p class="tech-stack-label">
             <span class="es-only">Tecnologías</span>
             <span class="en-only">Tech Stack</span>
           </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <div class="tech-stack-grid">
             {stacks.map((s) => (
-              <span class="tech-badge" style="color: var(--cyan); background: rgba(34,211,238,0.07); border-color: rgba(34,211,238,0.22);">
-                {s}
-              </span>
+              <span class="tech-chip">{s}</span>
             ))}
           </div>
         </div>
@@ -94,5 +96,98 @@ const stacks = [
   .avatar-blob-1 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(139,92,246,0.15), transparent); top: 10%; left: 10%; }
   .avatar-blob-2 { width: 160px; height: 160px; background: radial-gradient(circle, rgba(34,211,238,0.12), transparent); bottom: 10%; right: 10%; }
   .avatar-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; position: relative; z-index: 1; }
+
+  /* ── Tech stack (minimal, no shadow) ─────────────────────── */
+  .tech-stack-card {
+    padding: 14px 4px 6px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    position: relative;
+  }
+  .tech-stack-label {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    padding-left: 2px;
+  }
+  .tech-stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 7px;
+  }
+  .tech-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    will-change: transform, opacity;
+    cursor: default;
+  }
+  .tech-chip:hover {
+    color: var(--cyan);
+    border-color: rgba(34,211,238,0.45);
+    background: rgba(34,211,238,0.06);
+    transform: translateY(-2px);
+  }
+
   @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
 </style>
+
+<script>
+  import anime from 'animejs';
+
+  const card  = document.getElementById('techStack');
+  if (card) {
+    const chips = Array.from(card.querySelectorAll<HTMLElement>('.tech-chip'));
+
+    /* Initial state: invisible, slightly down + scaled */
+    anime.set(chips, { opacity: 0, translateY: 14, scale: 0.85 });
+
+    /* Trigger on viewport entry (once) */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        anime({
+          targets: chips,
+          opacity: [0, 1],
+          translateY: [14, 0],
+          scale: [0.85, 1],
+          easing: 'easeOutBack',
+          duration: 700,
+          delay: anime.stagger(28, { from: 'first' }),
+        });
+        io.disconnect();
+      });
+    }, { threshold: 0.25 });
+    io.observe(card);
+
+    /* Hover ripple: highlight neighbors briefly */
+    chips.forEach((chip, idx) => {
+      chip.addEventListener('mouseenter', () => {
+        chips.forEach((c, i) => {
+          const distance = Math.abs(i - idx);
+          if (distance === 0 || distance > 3) return;
+          anime.remove(c);
+          anime({
+            targets: c,
+            translateY: [0, -3, 0],
+            duration: 420,
+            delay: distance * 60,
+            easing: 'easeOutSine',
+          });
+        });
+      });
+    });
+  }
+</script>
