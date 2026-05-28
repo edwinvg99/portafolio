@@ -7,18 +7,18 @@ const projects = [
       en: 'Educational platform about the Colombian electricity market with real-time data from SIMEM and XM, CREG documents, sector news and an AI chatbot (Gemini). University thesis project.',
     },
     challenges: {
-      es: 'Integrar las APIs de XM y SIMEM fue el mayor reto: esquemas cambiantes sin documentación oficial, límites de tasa estrictos y datos en formatos inconsistentes. Garantizar respuestas seguras del chatbot sobre regulaciones eléctricas sin alucinaciones requirió múltiples iteraciones de prompting y validación de salidas.',
-      en: 'Integrating XM and SIMEM APIs was the main challenge: changing schemas with no official docs, strict rate limits, and inconsistent data formats. Ensuring safe chatbot answers about electrical regulations without hallucinating required multiple prompting iterations and output validation.',
+      es: 'Integrar las APIs de XM y SIMEM fue el mayor reto: esquemas cambiantes sin documentación oficial, límites de tasa estrictos, datos en formatos inconsistentes y, además, geo-restricciones que bloqueaban las consultas desde ciertos entornos. Garantizar respuestas seguras del chatbot sobre regulaciones eléctricas sin alucinaciones requirió múltiples iteraciones de prompting y validación de salidas.',
+      en: 'Integrating XM and SIMEM APIs was the main challenge: changing schemas with no official docs, strict rate limits, inconsistent data formats and, on top of that, geo-restrictions that blocked requests from certain environments. Ensuring safe chatbot answers about electrical regulations without hallucinating required multiple prompting iterations and output validation.',
     },
     learnings: {
-      es: 'Diseño de pipelines de datos con reintentos y circuit breakers, patrones de API gateway, WebSockets para actualizaciones en tiempo real y prompting efectivo para LLMs en dominios especializados.',
-      en: 'Data pipeline design with retries and circuit breakers, API gateway patterns, WebSocket handling for real-time updates, and effective prompting for LLMs in specialized domains.',
+      es: 'Aprendí a implementar funciones serverless (Cloudflare Workers) para resolver la geo-restricción de las APIs externas, a trabajar con SDKs orientados a autenticación, registro y manejo de tokens, y a darle un enfoque educativo e informativo a una plataforma web mediante formularios tipo examen y generación de certificados en PDF. También afiné el prompting de LLMs para dominios especializados y el diseño de pipelines de datos con reintentos.',
+      en: 'I learned to implement serverless functions (Cloudflare Workers) to bypass geo-restrictions on external APIs, to work with auth-focused SDKs (sign-up, token handling, sessions), and to give a strong educational angle to a web platform through quiz-style forms and PDF certificate generation. I also refined LLM prompting for specialized domains and resilient data pipelines with retries.',
     },
     tags: ['React', 'Node.js', 'MongoDB', 'Gemini API', 'Cloudflare'],
-    color:    '#00ffc6',
-    colorAlt: '#00d4e8',
-    glow:     'rgba(0,255,198,0.2)',
-    accent:   'linear-gradient(135deg, #00c8a0, #00d4ff)',
+    color:    '#0284c7',
+    colorAlt: '#38bdf8',
+    glow:     'rgba(2,132,199,0.25)',
+    accent:   'linear-gradient(135deg, #0369a1, #38bdf8)',
     url:      'energiaclara.up.railway.app',
     liveUrl:  'https://energiaclara.up.railway.app/',
     githubUrl:'https://github.com/edwinvg99/energia-clara',
@@ -31,12 +31,12 @@ const projects = [
       en: 'Digital law courses e-commerce platform with full admin dashboard. User management, courses, modules, enrollments and per-module progress tracking.',
     },
     challenges: {
-      es: 'Diseñar un sistema de permisos multi-rol (estudiante, instructor, admin) sin exponer rutas incorrectas fue el mayor desafío. Las relaciones en Prisma para rastrear progreso granular por módulo requirieron varios rediseños de esquema para evitar consultas N+1.',
-      en: 'Designing a multi-role permission system (student, instructor, admin) without exposing wrong routes was the main challenge. Prisma relations for granular per-module progress tracking required several schema redesigns to avoid N+1 queries.',
+      es: 'Diseñar un sistema de permisos multi-rol (estudiante, instructor, admin) sin exponer rutas incorrectas, ejecutar una migración controlada de los usuarios desde una plataforma ya en funcionamiento (Wissbook) sin pérdida de datos, y actuar con rapidez ante cambios exprés solicitados por el cliente.',
+      en: 'Designing a multi-role permission system (student, instructor, admin) without exposing wrong routes, running a controlled user migration from an already-live platform (Wissbook) without data loss, and reacting fast to express changes requested by the client.',
     },
     learnings: {
-      es: 'Patrones RBAC con JWT, normalización de base de datos relacional para e-learning, diseño de UX para dashboards administrativos complejos y manejo correcto de transacciones en Prisma para operaciones de matrícula.',
-      en: 'RBAC patterns with JWT, relational database normalization for e-learning, UX design for complex admin dashboards, and proper Prisma transaction handling for enrollment operations.',
+      es: 'Manejo de grandes volúmenes de datos reales, seguridad de la información personal de los usuarios, optimización de rendimiento y diseño UX/UI orientado a un público no técnico.',
+      en: 'Handling large volumes of real-world data, securing users’ personal information, performance optimization, and UX/UI design aimed at a non-technical audience.',
     },
     tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma'],
     color:    '#93c5fd',
@@ -55,18 +55,19 @@ const projects = [
       en: 'Full e-commerce platform with shipping, order and product management. Includes admin dashboard, REST API backend and SPA frontend with real-time status tracking.',
     },
     challenges: {
-      es: 'La lógica de cálculo de costos de envío por peso, dimensiones y zonas geográficas fue más compleja de lo esperado. Gestionar múltiples estados de una orden sin inconsistencias requirió implementar una máquina de estados explícita con transiciones validadas en backend.',
-      en: 'Shipping cost calculation by weight, dimensions and geographic zones was more complex than expected. Managing multiple order states without inconsistencies required an explicit state machine with backend-validated transitions.',
+      es: 'Manejo de webhooks para mantener la información sincronizada en tiempo real, trazabilidad completa del estado de cada orden y gestión de stock con reserva temporal: cuando un producto entra en proceso de compra queda bloqueado para los demás usuarios, y si la transacción no se concreta vuelve a liberarse automáticamente al inventario.',
+      en: 'Handling webhooks to keep information continuously in sync, full end-to-end traceability of every order, and stock management with temporary holds: when a product enters a purchase flow it gets locked for other users, and if the transaction is not completed it is automatically released back into inventory.',
     },
     learnings: {
-      es: 'Diseño de flujos e-commerce end-to-end, máquinas de estado para ciclos de vida de órdenes, diseño de API REST semántica y paginación con cursor para listas grandes.',
-      en: 'End-to-end e-commerce flow design, state machines for order lifecycle, semantic REST API design, and cursor-based pagination for large lists.',
+      es: 'Diseño de flujos e-commerce end-to-end, máquinas de estado para el ciclo de vida de una orden, diseño de APIs REST semánticas y manejo de concurrencia para reservar inventario sin sobreventa.',
+      en: 'End-to-end e-commerce flow design, state machines for order lifecycle, semantic REST API design, and concurrency handling to reserve inventory without overselling.',
     },
     tags: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'Express'],
-    color:    '#38bdf8',
-    colorAlt: '#7dd3fc',
-    glow:     'rgba(56,189,248,0.2)',
-    accent:   'linear-gradient(135deg, #1d4ed8, #38bdf8)',
+    color:    '#F59E0B',
+    colorAlt: '#FBBF24',
+    glow:     'rgba(245,158,11,0.28)',
+    accent:   'linear-gradient(135deg, #F59E0B, #FBBF24)',
+    btnTextColor: '#0d1117',
     url:      'enviaya.up.railway.app',
     liveUrl:  'https://enviaya.up.railway.app/',
     githubUrl:'https://github.com/edwinvg99/envia-Ya_v1',
@@ -79,12 +80,12 @@ const projects = [
       en: 'Web app connected to the Spotify API for playing music, viewing playback history, favorite artist stats and personal music trends with animated visualizations.',
     },
     challenges: {
-      es: 'El flujo OAuth 2.0 de Spotify con refresh automático de tokens fue el mayor reto, especialmente manejar expiración de tokens en medio de una sesión activa sin interrumpir la reproducción. Los límites de tasa para usuarios gratuitos obligaron a implementar colas de solicitudes y caché agresiva.',
-      en: 'Spotify OAuth 2.0 with automatic token refresh was the main challenge, especially handling mid-session token expiration without interrupting playback. Rate limits for free-tier users required request queues and aggressive caching.',
+      es: 'Usar el SDK oficial de Spotify obligó a estar muy apegado a una documentación muy específica y en constante cambio. Lograr una integración no invasiva del reproductor dentro de la web —sin romper la experiencia visual del resto de la app— y explorar autenticación y backend con Firebase fueron los retos principales.',
+      en: 'Working with Spotify’s official SDK meant sticking very closely to a specific and constantly evolving documentation. Achieving a non-invasive in-page player —without breaking the visual experience of the rest of the app— and exploring authentication and backend with Firebase were the main challenges.',
     },
     learnings: {
-      es: 'OAuth 2.0 completo con manejo de tokens en producción, sincronización en tiempo real con Firebase, visualización de datos con Anime.js y gestión de colas para respetar rate limits de APIs de terceros.',
-      en: 'Full OAuth 2.0 with production token management, Firebase real-time sync, data visualization with Anime.js, and queue management to respect third-party API rate limits.',
+      es: 'Gestión de espacios dentro de una plataforma, manejo y consumo de un SDK externo, gestión de colas y rate limits, y pensar de manera creativa para ofrecer opciones llamativas y útiles a los usuarios.',
+      en: 'Managing UI real estate inside a platform, consuming and integrating an external SDK, queue handling and rate-limit awareness, and creative thinking to deliver eye-catching and useful options for users.',
     },
     tags: ['React', 'Spotify API', 'Node.js', 'Anime.js', 'Firebase'],
     color:    '#4ade80',
@@ -103,18 +104,19 @@ const projects = [
       en: 'Modern web app to visualize Valorant player stats and explore agent info. Features smart caching, automatic background updates and responsive design.',
     },
     challenges: {
-      es: 'Trabajar con la API no oficial de Valorant implicó lidiar con endpoints inestables y breaking changes sin previo aviso. La estrategia de caché debía balancear datos frescos con disponibilidad usando stale-while-revalidate sin bloquear la UI.',
-      en: 'Working with the unofficial Valorant API meant dealing with unstable endpoints and breaking changes without notice. The cache strategy had to balance fresh data with availability using stale-while-revalidate without blocking the UI.',
+      es: 'Trabajar con una API no oficial de Valorant fue complicado: los endpoints eran inestables y cambiaban de un momento a otro sin previo aviso. La estrategia para mantener los datos al día debía equilibrar información fresca con disponibilidad, mostrando lo que ya estaba guardado mientras se cargaba lo nuevo, sin congelar la interfaz.',
+      en: 'Working with an unofficial Valorant API was tricky: endpoints were unstable and changed from one moment to the next with no warning. The strategy to keep data up to date had to balance freshness with availability, showing what was already saved while new data loaded, without freezing the interface.',
     },
     learnings: {
-      es: 'Estrategias de caché avanzadas con TTL por tipo de dato, jobs en segundo plano con scheduling, optimización de bundle para React 19 y resiliencia ante APIs de terceros inestables con fallbacks graduales.',
-      en: 'Advanced caching with per-data-type TTL, background job scheduling, React 19 bundle optimization, and resilience against unstable third-party APIs with graceful fallbacks.',
+      es: 'Cómo guardar temporalmente distintos tipos de datos con tiempos de caducidad diferentes según su importancia, cómo ejecutar tareas automáticas en segundo plano para refrescar la información, optimización del tamaño final de la app con React 19, y cómo lograr que la web siga funcionando aunque la API externa falle, mostrando datos previos en lugar de errores.',
+      en: 'How to temporarily store different kinds of data with different expiration times based on importance, how to run automatic background tasks to refresh information, app bundle optimization with React 19, and how to keep the site working even when the external API fails by showing previous data instead of errors.',
     },
     tags: ['React 19', 'Vite', 'Tailwind CSS 4', 'Node.js', 'Express.js'],
-    color:    '#00d4ff',
-    colorAlt: '#67e8f9',
-    glow:     'rgba(0,212,255,0.2)',
-    accent:   'linear-gradient(135deg, #0284c7, #00d4ff)',
+    color:    '#ffffff',
+    colorAlt: '#f1f5f9',
+    glow:     'rgba(255,255,255,0.45)',
+    accent:   'linear-gradient(135deg, #ffffff, #e0f2fe)',
+    btnTextColor: '#0d1117',
     url:      'spectrum.up.railway.app',
     liveUrl:  'https://spectrum.up.railway.app/',
     githubUrl:'https://github.com/edwinvg99/spectrum',
@@ -220,7 +222,7 @@ const N = projects.length;
                 <span class="ps-counter">0{i + 1} <span class="ps-counter-sep">/</span> 0{N}</span>
               </div>
 
-              <h3 class="ps-title">{p.name}</h3>
+              <h3 class="ps-title" style={`color: ${p.color}; text-shadow: 0 0 24px ${p.glow};`}>{p.name}</h3>
 
               <p class="ps-desc">
                 <span class="es-only">{p.desc.es}</span>
@@ -271,7 +273,7 @@ const N = projects.length;
                 {p.liveUrl && p.liveUrl !== '#' && (
                   <a href={p.liveUrl} target="_blank" rel="noopener noreferrer"
                      class="btn-primary"
-                     style={`background: ${p.accent}; box-shadow: 0 4px 18px ${p.glow};`}>
+                     style={`background: ${p.accent}; box-shadow: 0 4px 18px ${p.glow}; color: ${p.btnTextColor ?? '#ffffff'};`}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                       <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>

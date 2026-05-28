@@ -242,12 +242,12 @@ const jobs = [
   .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .exp-tag { padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); }
   @media (max-width: 768px) {
-    .timeline-line { left: 16px; }
-    .timeline-row  { grid-template-columns: 32px 1fr; }
+    .timeline-line { display: none; }
+    .timeline-row  { display: flex; }
     .tl-has-date   { display: none; }
-    .tl-has-card   { padding-left: 16px; padding-right: 0; text-align: left; grid-column: 2; }
-    .tl-right.tl-has-card { padding-left: 16px; grid-column: 2; }
-    .tl-left.tl-has-card  { padding-left: 16px; padding-right: 0; text-align: left; grid-column: 2; grid-row: 1; }
-    .tl-center     { justify-content: flex-start; }
+    .tl-center     { display: none; }
+    .tl-has-card   { padding: 0; text-align: left; width: 100%; }
+    .tl-right.tl-has-card { padding: 0; }
+    .tl-left.tl-has-card  { padding: 0; }
   }
 </style>
