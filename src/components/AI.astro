@@ -1,0 +1,153 @@
+---
+import logos from '../data/ai-logos.json';
+const dark = (h: string) => ['#000000', '#191919'].includes(h);
+
+const flow = [
+  { es: 'Especificación', en: 'Spec' },
+  { es: 'Plan', en: 'Plan' },
+  { es: 'Agente construye', en: 'Agent builds' },
+  { es: 'Pruebas + QA visual', en: 'Tests + visual QA' },
+  { es: 'Mi revisión', en: 'My review' },
+  { es: 'Producción', en: 'Ship' },
+];
+
+const caps = [
+  {
+    icon: '↻',
+    t: { es: 'Agentes en bucle', en: 'Agentic loops' },
+    d: {
+      es: 'Tareas largas con plan, ejecución, verificación y corrección iterativa: el agente corre pruebas y revisa capturas del navegador antes de darme el resultado.',
+      en: 'Long-running tasks with plan, execution, verification and iterative fixes: the agent runs tests and checks browser screenshots before handing results back.',
+    },
+  },
+  {
+    icon: '◆',
+    t: { es: 'Skills propias', en: 'Custom skills' },
+    d: {
+      es: 'Escribo skills reutilizables para Claude Code. Por ejemplo, una que convierte un guion y unos clips en un short terminado usando las 320 plantillas de TRUJILLO Studio.',
+      en: 'I write reusable Claude Code skills, e.g. one that turns a script plus raw clips into a finished short using the 320 templates in TRUJILLO Studio.',
+    },
+  },
+  {
+    icon: '⇄',
+    t: { es: 'MCP y conectores', en: 'MCP & connectors' },
+    d: {
+      es: 'Conecto los agentes a herramientas reales mediante MCP: navegador, GitHub, documentación actualizada (Context7), Notion o Trello.',
+      en: 'I connect agents to real tools through MCP: browser automation, GitHub, up-to-date docs (Context7), Notion and Trello.',
+    },
+  },
+  {
+    icon: '¶',
+    t: { es: 'Contexto y prompts', en: 'Context & prompting' },
+    d: {
+      es: 'Cada repositorio lleva sus reglas para agentes (CLAUDE.md / AGENTS.md), un plan de tareas y especificaciones claras antes de escribir código.',
+      en: 'Every repo carries agent rules (CLAUDE.md / AGENTS.md), a task plan and clear specs before any code is written.',
+    },
+  },
+  {
+    icon: '✦',
+    t: { es: 'IA dentro del producto', en: 'AI inside the product' },
+    d: {
+      es: 'Chatbot con Gemini acotado a regulación eléctrica (Energía Clara), y transcripción, subtítulos y recortes con IA local (TRUJILLO Studio).',
+      en: 'A Gemini chatbot scoped to energy regulation (Energía Clara), plus local-AI transcription, captions and cut-outs (TRUJILLO Studio).',
+    },
+  },
+  {
+    icon: '✓',
+    t: { es: 'Yo respondo por el código', en: 'I own the output' },
+    d: {
+      es: 'La IA acelera, pero la arquitectura, la seguridad y la revisión final son mías. Por ejemplo, nunca ejecuto datos de prueba contra producción.',
+      en: 'AI speeds things up, but architecture, security and final review are mine. For example, I never run test data against production.',
+    },
+  },
+];
+---
+
+<section id="ai" class="ai">
+  <div class="ai-glow" aria-hidden="true"></div>
+  <div class="container">
+    <header class="reveal head">
+      <p class="eyebrow"><span class="es-only">Desarrollo con IA</span><span class="en-only">AI-assisted engineering</span></p>
+      <h2 class="h2">
+        <span class="es-only">La IA como herramienta aplicada a <span class="grad-text">proyectos reales</span>.</span>
+        <span class="en-only">AI as a tool applied to <span class="grad-text">real projects</span>.</span>
+      </h2>
+      <p class="lead">
+        <span class="es-only">Uso modelos de lenguaje desde las primeras versiones públicas. Hoy trabajo con agentes que leen el código, ejecutan pruebas y operan en bucle bajo mi supervisión. Así entrego en semanas lo que antes tomaba meses.</span>
+        <span class="en-only">I've used LLMs since the first public releases. Today I work with agents that read the codebase, run tests and operate in loops under my supervision, shipping in weeks what used to take months.</span>
+      </p>
+    </header>
+
+    <ol class="flow reveal reveal-d1" aria-label="Flujo de trabajo">
+      {flow.map((f, i) => (
+        <li><span class="n">0{i + 1}</span><span class="es-only">{f.es}</span><span class="en-only">{f.en}</span></li>
+      ))}
+    </ol>
+
+    <div class="caps">
+      {caps.map((c, i) => (
+        <article class={`cap card reveal reveal-d${(i % 3) + 1}`}>
+          <span class="cap-icon" aria-hidden="true">{c.icon}</span>
+          <h3><span class="es-only">{c.t.es}</span><span class="en-only">{c.t.en}</span></h3>
+          <p><span class="es-only">{c.d.es}</span><span class="en-only">{c.d.en}</span></p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+
+  <div class="logos reveal" data-marquee aria-label="Herramientas de IA que uso">
+    <p class="logos-label"><span class="es-only">Herramientas con las que trabajo a diario</span><span class="en-only">Tools I work with every day</span></p>
+    <div class="logos-track">
+      {[0, 1].map((dup) => (
+        <ul class="logos-set" aria-hidden={dup === 1 ? 'true' : undefined}>
+          {[...logos, ...logos].map((l) => (
+            <li class="logo" style={`--brand: ${dark(l.hex) ? "var(--text)" : l.hex};`}>
+              <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d={l.path} fill="currentColor" /></svg>
+              <span>{l.name}</span>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ai { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%); overflow: hidden; }
+  .ai-glow { position: absolute; left: 50%; top: 10%; translate: -50% 0; width: 1100px; height: 500px; background: radial-gradient(closest-side, rgba(255, 106, 43, .06), transparent); pointer-events: none; }
+  .head { margin-bottom: 48px; position: relative; }
+  .flow { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-bottom: 40px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: rgba(255, 255, 255, .015); }
+  .flow li { position: relative; padding: 18px 16px; font-size: .9rem; font-weight: 500; display: flex; flex-direction: column; gap: 4px; }
+  .flow li + li { border-left: 1px solid var(--border); }
+  .flow li:nth-child(3) { background: rgba(241, 239, 233, .04); }
+  .flow li:nth-child(5) { background: rgba(255, 106, 43, .07); }
+  .flow .n { font-family: var(--font-mono); font-size: .7rem; color: var(--text-dim); }
+  .caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cap { padding: 26px; transition: border-color .3s, transform .3s var(--ease); }
+  .cap:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+  .cap-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-size: 1.1rem; margin-bottom: 18px; }
+  .cap h3 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -.01em; margin-bottom: 8px; }
+  .cap p { color: var(--text-muted); font-size: .9rem; }
+  .logos-label { text-align: center; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 22px; }
+  .logos-track { display: flex; width: max-content; animation: marquee 38s linear infinite; will-change: transform; }
+  .logos { position: relative; margin-top: 64px; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+  .logos-set { display: flex; gap: 18px; padding-right: 18px; list-style: none; }
+  .logo { display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); white-space: nowrap; font-weight: 600; font-size: .95rem; transition: color .3s, border-color .3s, transform .3s var(--ease); }
+  .logo svg { color: var(--text-muted); transition: color .3s; }
+  .logo:hover { color: var(--text); border-color: var(--border-strong); transform: translateY(-2px); }
+  .logo:hover svg { color: var(--brand); }
+  @media (max-width: 980px) {
+    .flow { grid-template-columns: repeat(3, 1fr); }
+    .flow li:nth-child(4) { border-left: 0; }
+    .flow li:nth-child(n+4) { border-top: 1px solid var(--border); }
+    .caps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .flow { grid-template-columns: repeat(2, 1fr); }
+    .flow li { border-left: 0 !important; }
+    .flow li:nth-child(even) { border-left: 1px solid var(--border) !important; }
+    .flow li:nth-child(n+3) { border-top: 1px solid var(--border); }
+    .caps { grid-template-columns: 1fr; }
+  }
+</style>

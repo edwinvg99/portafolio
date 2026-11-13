@@ -1,0 +1,143 @@
+---
+import tech from '../data/tech-logos.json';
+const dark = (h: string) => ['#000000', '#2D3748', '#0B0D0E'].includes(h);
+const wa = 'https://wa.me/573042225380?text=' + encodeURIComponent('Hola Edwin, vi tu portafolio y me gustaría hablar contigo.');
+---
+
+<section id="top" class="hero">
+  <div class="hero-bg grid-bg" aria-hidden="true"></div>
+  
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="hello reveal reveal-d1">
+        <span class="es-only">Hola, soy</span><span class="en-only">Hi, I'm</span> <strong>Edwin Velásquez</strong>
+        <span class="role">— <span class="es-only">Desarrollador Full Stack</span><span class="en-only">Full Stack Developer</span></span>
+      </p>
+
+      <h1 class="hero-title reveal reveal-d1">
+        <span class="es-only">Construyo software que resuelve <span class="accent">problemas reales</span>.</span>
+        <span class="en-only">I build software that solves <span class="accent">real problems</span>.</span>
+      </h1>
+
+      <p class="hero-sub reveal reveal-d2">
+        <span class="es-only">Full Stack con 4 años creando plataformas web, SaaS, puntos de venta y apps de escritorio para clientes reales. Me enfoco en entender el negocio, diseñar bases de datos sólidas y entregar software mantenible que sigue funcionando mucho después del lanzamiento.</span>
+        <span class="en-only">Full Stack developer with 4 years building web platforms, SaaS products, point-of-sale systems and desktop apps for real clients. I focus on understanding the business, designing solid databases and shipping maintainable software that keeps working long after launch.</span>
+      </p>
+
+      <div class="cta reveal reveal-d2">
+        <a href="#projects" class="btn btn-primary">
+          <span class="es-only">Ver proyectos</span><span class="en-only">See projects</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="/edwinVelasquezCV.pdf" download class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          <span class="es-only">Descargar CV</span><span class="en-only">Download CV</span>
+        </a>
+        <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-ghost icon-btn" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.86 9.86 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+        </a>
+        <a href="https://github.com/edwinvg99" target="_blank" rel="noopener noreferrer" class="btn btn-ghost icon-btn" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        </a>
+      </div>
+
+      <dl class="stats reveal reveal-d3">
+        <div><dt data-count="14">14</dt><dd><span class="es-only">proyectos entregados</span><span class="en-only">projects shipped</span></dd></div>
+        <div><dt data-count="2000" data-suffix="+">2.000+</dt><dd><span class="es-only">usuarios en plataformas que construí</span><span class="en-only">users on platforms I built</span></dd></div>
+        <div><dt data-count="4" data-suffix="+">4+</dt><dd><span class="es-only">años construyendo software</span><span class="en-only">years building software</span></dd></div>
+      </dl>
+    </div>
+
+    <div class="hero-visual reveal reveal-d2">
+      <div class="photo-ring">
+        <img src="/profile.webp" alt="Edwin Velásquez" width="760" height="760" fetchpriority="high" />
+        <div class="photo-cap">
+          <span><span class="es-only">Ingeniero de Software</span><span class="en-only">Software Engineer</span></span>
+          <span class="cap-dim">Medellín, CO</span>
+        </div>
+      </div>
+          </div>
+  </div>
+
+  <div class="marquee" data-marquee aria-label="Tecnologías con las que trabajo">
+    <div class="marquee-track">
+      {[0, 1].map((dup) => (
+        <ul class="mq-set" aria-hidden={dup === 1 ? 'true' : undefined}>
+          {tech.map((t) => (
+            <li class="mq-item" style={`--brand: ${dark(t.hex) ? 'var(--text)' : t.hex};`}>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d={t.path} fill="currentColor" /></svg>
+              <span>{t.name}</span>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { min-height: 100svh; padding: 128px 0 0; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.25fr .9fr; gap: 56px; align-items: center; flex: 1; }
+  .hello { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 14px; }
+  .hello strong { color: var(--text); font-weight: 600; }
+  .role { color: var(--text-dim); }
+  .hero-title { font-family: var(--font-display); font-weight: 700; letter-spacing: -.035em; line-height: 1.04; font-size: clamp(2.3rem, 4.4vw, 3.7rem); margin-bottom: 24px; max-width: 15ch; }
+  .accent { color: var(--accent); }
+  .hero-sub { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin-bottom: 34px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+  .icon-btn { padding: 12px; width: 46px; height: 46px; }
+  .stats { display: grid; grid-template-columns: repeat(3, auto); gap: 36px; justify-content: start; }
+  .stats dt { font-family: var(--font-display); font-weight: 700; font-size: 2.1rem; letter-spacing: -.03em; line-height: 1; }
+  .stats dd { color: var(--text-dim); font-size: .82rem; margin-top: 6px; max-width: 150px; }
+
+  .hero-visual { position: relative; justify-self: center; width: min(420px, 100%); }
+  .photo-ring { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid var(--border-strong); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9); }
+  .photo-ring img { aspect-ratio: 4/5; object-fit: cover; object-position: 50% 30%; width: 100%; background: #0b0b0b; }
+  .photo-cap { position: absolute; inset: auto 0 0 0; display: flex; justify-content: space-between; align-items: end; padding: 48px 20px 18px; background: linear-gradient(transparent, rgba(8, 8, 7, .92)); font-size: .86rem; font-weight: 600; }
+  .cap-dim { font-family: var(--font-mono); font-size: .74rem; font-weight: 400; color: var(--text-muted); }
+
+  .marquee { position: relative; margin-top: 72px; border-block: 1px solid var(--border); overflow: hidden; padding: 20px 0; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+  .marquee-track { display: flex; width: max-content; animation: marquee 55s linear infinite; will-change: transform; }
+  .mq-set { display: flex; gap: 12px; padding-right: 12px; list-style: none; }
+  .mq-item {
+    display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px;
+    border: 1px solid transparent; color: var(--text-dim); font-size: .9rem; font-weight: 500; white-space: nowrap;
+    transition: color .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease);
+  }
+  .mq-item svg { color: var(--text-dim); opacity: .8; transition: color .35s var(--ease), opacity .35s, transform .45s var(--ease); }
+  .mq-item:hover { color: var(--text); background: rgba(241, 239, 233, .04); border-color: var(--border-strong); transform: translateY(-2px); }
+  .mq-item:hover svg { color: var(--brand); opacity: 1; transform: scale(1.12); }
+
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 64px; }
+    .hero-visual { width: min(340px, 82%); }
+      }
+  @media (max-width: 560px) {
+    .hero { padding-top: 104px; }
+    .stats { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .stats dt { font-size: 1.6rem; }
+    .stats dd { font-size: .74rem; }
+          }
+</style>
+
+<script>
+  // animated counters
+  const fmt = (n: number) => n.toLocaleString('es-CO');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target as HTMLElement;
+      const end = Number(el.dataset.count), suf = el.dataset.suffix || '';
+      const t0 = performance.now(), dur = 1400;
+      const tick = (t: number) => {
+        const p = Math.min(1, (t - t0) / dur), v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        el.textContent = fmt(v) + (p === 1 ? suf : '');
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('[data-count]').forEach((el) => io.observe(el));
+</script>

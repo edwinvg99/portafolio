@@ -1,193 +1,72 @@
 ---
-const stacks = [
-  'JavaScript', 'TypeScript', 'Python', 'SQL',
-  'React', 'Next.js', 'Astro', 'HTML', 'CSS', 'Tailwind CSS',
-  'Node.js', 'Express', 'Django', 'REST APIs', 'Serverless Functions',
-  'PostgreSQL', 'MongoDB', 'MySQL', 'Prisma ORM', 'Firebase',
-  'Cloudflare', 'Railway', 'Vercel', 'Docker', 'Git', 'GitHub Actions', 'CI/CD', 'ngrok',
-  'Webhooks', 'Google API', 'JWT',
+const pillars = [
+  {
+    t: { es: 'Plataformas web y SaaS', en: 'Web platforms & SaaS' },
+    d: { es: 'Del modelo de datos al despliegue: autenticación, roles, pagos, paneles administrativos y reportes.', en: 'From data model to deployment: auth, roles, payments, admin dashboards and reporting.' },
+  },
+  {
+    t: { es: 'Software para negocios reales', en: 'Software for real businesses' },
+    d: { es: 'Sistemas a medida para operar el día a día: ventas, inventario, pedidos, reportes y migración de datos sin pérdidas.', en: 'Custom systems to run the day-to-day: sales, inventory, orders, reports and lossless data migration.' },
+  },
+  {
+    t: { es: 'Automatización e integraciones', en: 'Automation & integrations' },
+    d: { es: 'APIs de terceros, workers 24/7, scraping, webhooks, colas y apps de escritorio.', en: 'Third-party APIs, 24/7 workers, scraping, webhooks, queues and desktop apps.' },
+  },
 ];
 
+const groups = [
+  { k: { es: 'Lenguajes', en: 'Languages' }, v: ['TypeScript', 'JavaScript', 'Python', 'PowerShell'] },
+  { k: { es: 'Front-end', en: 'Front-end' }, v: ['React', 'Next.js', 'Astro', 'Vite', 'Tailwind CSS', 'Remotion'] },
+  { k: { es: 'Back-end', en: 'Back-end' }, v: ['Node.js', 'Express', 'REST APIs', 'Workers', 'Django', 'Better Auth / JWT'] },
+  { k: { es: 'Datos', en: 'Data' }, v: ['PostgreSQL', 'Prisma', 'Drizzle', 'MongoDB', 'MySQL', 'Redis'] },
+  { k: { es: 'Cloud y DevOps', en: 'Cloud & DevOps' }, v: ['Railway', 'Cloudflare (Workers, R2)', 'Vercel', 'Docker', 'GitHub Actions', 'Git'] },
+  { k: { es: 'Forma de trabajo', en: 'Ways of working' }, v: ['Scrum', 'Git Flow', 'UX/UI', 'Agentes de IA', 'Documentación'] },
+];
 ---
 
-<section id="about" style="background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);">
-  <div class="container">
-    <div class="about-grid">
-
-      <!-- Left: text -->
-      <div class="reveal-left">
-        <p class="section-label">
-          <span class="es-only">// sobre mí</span>
-          <span class="en-only">// about me</span>
-        </p>
-        <h2 class="section-title" style="background: none; -webkit-text-fill-color: var(--cyan); color: var(--cyan);">
-          <span class="es-only">El humano detrás<br/>del teclado</span>
-          <span class="en-only">The human behind<br/>the keyboard</span>
-        </h2>
-
-        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; font-size: 1.02rem;">
-          <span class="es-only">
-            Soy desarrollador de software enfocado en crear soluciones prácticas, bien estructuradas y
-            pensadas para el mundo real. Me interesa entender a fondo cada problema antes de resolverlo,
-            buscando siempre construir sistemas eficientes, claros y con propósito.
-          </span>
-          <span class="en-only">
-            I'm a software developer focused on building practical, well-structured solutions designed for
-            the real world. I care about understanding each problem deeply before solving it, always aiming
-            to build efficient, clear, and purposeful systems.
-          </span>
-        </p>
-
-        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 36px; font-size: 1.02rem;">
-          <span class="es-only">
-            Me motiva trabajar con datos, optimizar procesos y desarrollar herramientas que realmente aporten
-            valor. Estoy en constante aprendizaje, mejorando mis habilidades para diseñar soluciones cada vez
-            más sólidas, escalables y bien construidas.
-          </span>
-          <span class="en-only">
-            I'm motivated by working with data, optimizing processes, and developing tools that truly add value.
-            I'm constantly learning, improving my skills to design increasingly solid, scalable, and
-            well-crafted solutions.
-          </span>
-        </p>
-
-        <ul class="focus-list">
-          <li class="focus-item"><span class="es-only">Sistemas que resuelven problemas reales</span><span class="en-only">Systems that solve real-world problems</span></li>
-          <li class="focus-item"><span class="es-only">Automatización de procesos manuales</span><span class="en-only">Automation of manual processes</span></li>
-          <li class="focus-item"><span class="es-only">Integración de datos en tiempo real</span><span class="en-only">Real-time data integration</span></li>
-          <li class="focus-item"><span class="es-only">Optimización de rendimiento y escalabilidad</span><span class="en-only">Performance optimization and scalability</span></li>
-        </ul>
-      </div>
-
-      <!-- Right: avatar + tech stack -->
-      <div class="reveal-right about-right">
-        <!-- Avatar -->
-        <div class="avatar-box">
-          <div class="avatar-blob avatar-blob-1"></div>
-          <div class="avatar-blob avatar-blob-2"></div>
-          <img src="/imagen_profile.png" alt="Edwin Velasquez" class="avatar-img" />
-        </div>
-
-        <!-- Tech stack -->
-        <div id="techStack" class="tech-stack-card">
-          <p class="tech-stack-label">
-            <span class="es-only">Tecnologías</span>
-            <span class="en-only">Tech Stack</span>
-          </p>
-          <div class="tech-stack-grid">
-            {stacks.map((s) => (
-              <span class="tech-chip">{s}</span>
-            ))}
+<section id="about">
+  <div class="container about">
+    <div class="reveal">
+      <p class="eyebrow"><span class="es-only">Sobre mí</span><span class="en-only">About</span></p>
+      <h2 class="h2">
+        <span class="es-only">Entiendo el problema, luego escribo el código.</span>
+        <span class="en-only">I understand the problem first, then I write the code.</span>
+      </h2>
+      <p class="lead">
+        <span class="es-only">Soy Ingeniero de Software del Tecnológico de Antioquia (Medellín). He construido plataformas que hoy usan miles de personas, sistemas a medida para negocios y herramientas que yo mismo uso a diario. Me muevo con comodidad entre el front-end, el back-end, la base de datos y el despliegue.</span>
+        <span class="en-only">I'm a Software Engineer from Tecnológico de Antioquia (Medellín, Colombia). I've built platforms used by thousands of people, custom systems for businesses, and tools I use myself every day. I'm comfortable across front-end, back-end, databases and deployment.</span>
+      </p>
+      <div class="pillars">
+        {pillars.map((p) => (
+          <div class="pillar">
+            <h3><span class="es-only">{p.t.es}</span><span class="en-only">{p.t.en}</span></h3>
+            <p><span class="es-only">{p.d.es}</span><span class="en-only">{p.d.en}</span></p>
           </div>
-        </div>
+        ))}
       </div>
+    </div>
+
+    <div class="skills card reveal reveal-d1">
+      {groups.map((g) => (
+        <div class="sk-row">
+          <p class="sk-k"><span class="es-only">{g.k.es}</span><span class="en-only">{g.k.en}</span></p>
+          <div class="sk-v">{g.v.map((s) => <span class="chip">{s}</span>)}</div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .about-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  .about-right { display: flex; flex-direction: column; gap: 28px; }
-  .focus-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  .focus-item { color: var(--text-muted); font-size: 0.95rem; padding-left: 16px; position: relative; }
-  .focus-item::before { content: '▸'; position: absolute; left: 0; color: var(--purple); font-size: 0.8rem; top: 2px; }
-  .avatar-box { width: 100%; aspect-ratio: 4/3; border-radius: var(--radius); background: var(--card); border: 1.5px solid var(--card-border); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .avatar-blob { position: absolute; border-radius: 50%; }
-  .avatar-blob-1 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(139,92,246,0.15), transparent); top: 10%; left: 10%; }
-  .avatar-blob-2 { width: 160px; height: 160px; background: radial-gradient(circle, rgba(34,211,238,0.12), transparent); bottom: 10%; right: 10%; }
-  .avatar-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; position: relative; z-index: 1; }
-
-  /* ── Tech stack (minimal, no shadow) ─────────────────────── */
-  .tech-stack-card {
-    padding: 14px 4px 6px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    position: relative;
-  }
-  .tech-stack-label {
-    color: var(--text-muted);
-    font-size: 0.72rem;
-    margin-bottom: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    opacity: 0.7;
-    padding-left: 2px;
-  }
-  .tech-stack-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 7px;
-  }
-  .tech-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 11px;
-    border-radius: 999px;
-    font-size: 0.74rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.08);
-    white-space: nowrap;
-    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-    will-change: transform, opacity;
-    cursor: default;
-  }
-  .tech-chip:hover {
-    color: var(--cyan);
-    border-color: rgba(34,211,238,0.45);
-    background: rgba(34,211,238,0.06);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .pillars { display: grid; gap: 18px; margin-top: 36px; }
+  .pillar { padding-left: 18px; border-left: 2px solid rgba(255, 106, 43, .35); }
+  .pillar h3 { font-family: var(--font-display); font-size: 1.08rem; margin-bottom: 4px; }
+  .pillar p { color: var(--text-muted); font-size: .92rem; }
+  .skills { padding: 10px 26px; }
+  .sk-row { padding: 18px 0; }
+  .sk-row + .sk-row { border-top: 1px solid var(--border); }
+  .sk-k { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+  .sk-v { display: flex; flex-wrap: wrap; gap: 6px; }
+  @media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 40px; } .skills { padding: 4px 18px; } }
 </style>
-
-<script>
-  import anime from 'animejs';
-
-  const card  = document.getElementById('techStack');
-  if (card) {
-    const chips = Array.from(card.querySelectorAll<HTMLElement>('.tech-chip'));
-
-    /* Initial state: invisible, slightly down + scaled */
-    anime.set(chips, { opacity: 0, translateY: 14, scale: 0.85 });
-
-    /* Trigger on viewport entry (once) */
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        anime({
-          targets: chips,
-          opacity: [0, 1],
-          translateY: [14, 0],
-          scale: [0.85, 1],
-          easing: 'easeOutBack',
-          duration: 700,
-          delay: anime.stagger(28, { from: 'first' }),
-        });
-        io.disconnect();
-      });
-    }, { threshold: 0.25 });
-    io.observe(card);
-
-    /* Hover ripple: highlight neighbors briefly */
-    chips.forEach((chip, idx) => {
-      chip.addEventListener('mouseenter', () => {
-        chips.forEach((c, i) => {
-          const distance = Math.abs(i - idx);
-          if (distance === 0 || distance > 3) return;
-          anime.remove(c);
-          anime({
-            targets: c,
-            translateY: [0, -3, 0],
-            duration: 420,
-            delay: distance * 60,
-            easing: 'easeOutSine',
-          });
-        });
-      });
-    });
-  }
-</script>

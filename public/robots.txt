@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Contexto para agentes de IA: /llms.txt (índice) y /llms-full.txt (completo)
+Sitemap: https://edwin-portafolio.up.railway.app/sitemap.xml

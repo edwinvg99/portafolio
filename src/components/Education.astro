@@ -1,0 +1,118 @@
+---
+const certs = [
+  {
+    t: { es: 'Tecnólogo en Sistemas', en: 'Systems Technologist' },
+    org: 'Tecnológico de Antioquia', date: '2024',
+    img: '/certificados/diploma-tecnologo.webp', l: { es: 'Diploma', en: 'Diploma' },
+  },
+  {
+    t: { es: 'Técnico Profesional en Sistemas', en: 'Professional Technician in Systems' },
+    org: 'Tecnológico de Antioquia', date: '2023',
+    img: '/certificados/diploma-tecnico.webp', l: { es: 'Diploma', en: 'Diploma' },
+  },
+  {
+    t: { es: 'Scrum Foundation Professional Certification (SFPC)', en: 'Scrum Foundation Professional Certification (SFPC)' },
+    org: 'CertiProf', date: '2024',
+    img: '/certificados/scrum-certiprof.webp', l: { es: 'Certificado', en: 'Certificate' },
+  },
+  {
+    t: { es: 'Oracle Next Education (ONE) — Full Stack', en: 'Oracle Next Education (ONE) — Full Stack' },
+    org: 'Oracle + Alura Latam', date: '2022 — 2023',
+    pdf: '/certificados/certificado multi cursos-alura.pdf', l: { es: 'Certificado', en: 'Certificate' },
+  },
+  {
+    t: { es: 'Ética Profesional (36 h)', en: 'Professional Ethics (36 h)' },
+    org: 'COPNIA', date: '2023',
+    img: '/certificados/copnia-etica-profesional.webp', l: { es: 'Certificado', en: 'Certificate' },
+  },
+];
+const diploma = '/certificados/diploma-ingeniero-software.webp';
+---
+
+<section id="education">
+  <div class="container">
+    <header class="reveal head">
+      <p class="eyebrow"><span class="es-only">Formación</span><span class="en-only">Education</span></p>
+      <h2 class="h2"><span class="es-only">Formación y certificaciones.</span><span class="en-only">Education & certifications.</span></h2>
+    </header>
+
+    <div class="edu">
+      <article class="degree card reveal">
+        <div class="degree-text">
+          <span class="badge"><span class="es-only">Título profesional</span><span class="en-only">Professional degree</span></span>
+          <h3><span class="es-only">Ingeniero en Software</span><span class="en-only">B.Eng. in Software Engineering</span></h3>
+          <p class="org">Tecnológico de Antioquia — Institución Universitaria</p>
+          <p class="date"><span class="es-only">Graduado el 13 de agosto de 2026 · Medellín</span><span class="en-only">Graduated August 13, 2026 · Medellín, Colombia</span></p>
+          <p class="desc">
+            <span class="es-only">Énfasis en arquitectura de software, bases de datos, ingeniería de requisitos y desarrollo web. Proyecto de grado: Energía Clara, plataforma de datos abiertos del mercado eléctrico con IA.</span>
+            <span class="en-only">Focus on software architecture, databases, requirements engineering and web development. Capstone: Energía Clara, an open energy-market data platform with AI.</span>
+          </p>
+          <p class="ladder">
+            <span class="es-only">Técnico → Tecnólogo → Ingeniero.</span>
+            <span class="en-only">Technician → Technologist → Engineer.</span>
+          </p>
+        </div>
+        <button class="diploma" data-lightbox={JSON.stringify([diploma])} data-start="0" aria-label="Ver diploma">
+          <img src={diploma} alt="Diploma de Ingeniero en Software — Tecnológico de Antioquia" loading="lazy" width="898" height="1280" />
+          <span class="zoom"><span class="es-only">Ver diploma</span><span class="en-only">View diploma</span></span>
+        </button>
+      </article>
+
+      <ul class="certs">
+        {certs.map((c, i) => (
+          <li class={`cert reveal reveal-d${(i % 3) + 1}`}>
+            <div>
+              <h4><span class="es-only">{c.t.es}</span><span class="en-only">{c.t.en}</span></h4>
+              <p>{c.org} · {c.date}</p>
+            </div>
+            {c.img ? (
+              <button type="button" class="lnk-file" data-lightbox={JSON.stringify([c.img])} data-start="0">
+                <span class="es-only">{c.l.es}</span><span class="en-only">{c.l.en}</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            ) : (
+              <a href={c.pdf} target="_blank" rel="noopener noreferrer" class="lnk-file">
+                <span class="es-only">{c.l.es}</span><span class="en-only">{c.l.en}</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            )}
+          </li>
+        ))}
+        <li class="cert reveal">
+          <div>
+            <h4><span class="es-only">Idiomas</span><span class="en-only">Languages</span></h4>
+            <p><span class="es-only">Español nativo · Inglés A2 (lectura técnica)</span><span class="en-only">Spanish (native) · English A2 (technical reading)</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .head { margin-bottom: 48px; }
+  .edu { display: grid; grid-template-columns: 1.35fr 1fr; gap: 20px; align-items: start; }
+  .degree { display: grid; grid-template-columns: 1fr 200px; gap: 28px; padding: 30px; position: relative; overflow: hidden; }
+  .degree::after { content: ''; position: absolute; inset: 0; background: radial-gradient(600px 240px at 0% 0%, rgba(255, 106, 43, .12), transparent); pointer-events: none; }
+  .badge { display: inline-block; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; background: rgba(255, 106, 43, .1); color: var(--cyan); border: 1px solid rgba(255, 106, 43, .25); margin-bottom: 16px; }
+  .degree h3 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.1rem); letter-spacing: -.03em; line-height: 1.1; }
+  .org { color: var(--text); font-weight: 500; margin-top: 8px; }
+  .date { color: var(--text-dim); font-size: .88rem; margin-bottom: 16px; }
+  .desc { color: var(--text-muted); font-size: .94rem; margin-bottom: 14px; }
+  .ladder { font-family: var(--font-mono); font-size: .78rem; color: var(--text-dim); }
+  .diploma { position: relative; z-index: 1; padding: 0; border: 1px solid var(--border-strong); border-radius: 10px; overflow: hidden; background: #fff; cursor: zoom-in; align-self: center; transform: rotate(2deg); transition: transform .4s var(--ease), box-shadow .4s; box-shadow: 0 30px 60px -25px rgba(0, 0, 0, .8); }
+  .diploma:hover { transform: rotate(0) scale(1.03); }
+  .diploma img { width: 100%; height: auto; }
+  .zoom { position: absolute; inset: auto 8px 8px 8px; text-align: center; font-size: .74rem; font-weight: 600; padding: 6px; border-radius: 8px; background: rgba(6, 8, 13, .82); color: var(--text); }
+  .certs { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cert { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255, 255, 255, .02); }
+  .cert h4 { font-size: .95rem; font-weight: 600; }
+  .cert p { color: var(--text-dim); font-size: .82rem; }
+  .lnk-file { cursor: pointer; background: transparent; font-family: inherit; display: inline-flex; align-items: center; gap: 5px; font-size: .8rem; font-weight: 600; text-decoration: none; color: var(--text-muted); white-space: nowrap; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); transition: color .2s, border-color .2s; }
+  .lnk-file:hover { color: var(--cyan); border-color: rgba(255, 106, 43, .4); }
+  @media (max-width: 980px) { .edu { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) {
+    .degree { grid-template-columns: 1fr; padding: 22px; }
+    .diploma { max-width: 220px; justify-self: center; }
+  }
+</style>

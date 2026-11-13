@@ -8,3 +8,5 @@ node_modules/
 claude/
 
 .gitignore
+# capturas originales sin censurar (contienen datos personales)
+imagenes plataformas/

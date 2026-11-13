@@ -1,0 +1,80 @@
+---
+const EMAIL = 'velasquezgiraldoedwin@gmail.com';
+const wa = 'https://wa.me/573042225380?text=' + encodeURIComponent('Hola Edwin, vi tu portafolio y me gustaría hablar contigo.');
+const year = new Date().getFullYear();
+---
+
+<section id="contact" class="contact">
+  <div class="c-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="c-card reveal">
+      <p class="eyebrow"><span class="es-only">Contacto</span><span class="en-only">Contact</span></p>
+      <h2 class="c-title">
+        <span class="es-only">¿Buscas a alguien que construya, despliegue y <span class="grad-text">se haga cargo</span>?</span>
+        <span class="en-only">Looking for someone who builds, ships and <span class="grad-text">takes ownership</span>?</span>
+      </h2>
+      <p class="lead c-lead">
+        <span class="es-only">Estoy abierto a ofertas de empleo (remoto o en Medellín) y proyectos freelance. Respondo el mismo día.</span>
+        <span class="en-only">I'm open to job offers (remote or in Medellín) and freelance projects. I reply the same day.</span>
+      </p>
+
+      <div class="c-actions">
+        <a href={`mailto:${EMAIL}?subject=${encodeURIComponent('Oportunidad laboral — Portafolio')}`} class="btn btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          <span class="es-only">Escríbeme un correo</span><span class="en-only">Send me an email</span>
+        </a>
+        <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.86 9.86 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+          WhatsApp
+        </a>
+      </div>
+
+      <div class="c-direct">
+        <button class="copy" id="copyEmail" data-email={EMAIL} type="button">
+          <span class="mono">{EMAIL}</span>
+          <span class="copy-label" id="copyLabel"><span class="es-only">Copiar</span><span class="en-only">Copy</span></span>
+        </button>
+        <span class="mono muted">+57 304 222 5380</span>
+        <a href="https://github.com/edwinvg99" target="_blank" rel="noopener noreferrer" class="mono muted gh">github.com/edwinvg99</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container footer">
+    <span>© {year} Edwin Velásquez Giraldo · Medellín, Colombia</span>
+    <span class="mono">
+      <span class="es-only">Hecho con Astro · desplegado en Railway</span><span class="en-only">Built with Astro · deployed on Railway</span>
+    </span>
+  </footer>
+</section>
+
+<style>
+  .contact { padding-bottom: 32px; overflow: hidden; }
+  .c-glow { position: absolute; left: 50%; bottom: 0; translate: -50% 30%; width: 1000px; height: 600px; background: radial-gradient(closest-side, rgba(255, 106, 43, .14), transparent 70%); pointer-events: none; }
+  .c-card { position: relative; text-align: center; padding: 72px 32px; border-radius: 28px; border: 1px solid var(--border); background: radial-gradient(800px 300px at 50% 0%, rgba(241, 239, 233, .1), transparent), rgba(255, 255, 255, .015); }
+  .c-card .eyebrow::before { display: none; }
+  .c-title { font-family: var(--font-display); font-weight: 700; letter-spacing: -.035em; line-height: 1.05; font-size: clamp(2rem, 5vw, 3.6rem); max-width: 860px; margin: 0 auto 18px; }
+  .c-lead { margin: 0 auto 34px; }
+  .c-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
+  .c-direct { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px 26px; }
+  .mono { font-family: var(--font-mono); font-size: .84rem; }
+  .muted { color: var(--text-dim); text-decoration: none; }
+  .gh:hover { color: var(--text); }
+  .copy { display: inline-flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px; border-radius: 999px; border: 1px solid var(--border-strong); background: rgba(255, 255, 255, .03); cursor: pointer; color: var(--text); }
+  .copy-label { font-size: .74rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, .08); }
+  .copy.done .copy-label { background: rgba(74, 222, 128, .18); color: #bbf7d0; }
+  .footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: .82rem; }
+  @media (max-width: 560px) { .c-card { padding: 52px 18px; } .copy .mono { font-size: .76rem; } }
+</style>
+
+<script>
+  const b = document.getElementById('copyEmail') as HTMLButtonElement;
+  const label = document.getElementById('copyLabel')!;
+  const original = label.innerHTML;
+  b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(b.dataset.email!); } catch { location.href = 'mailto:' + b.dataset.email; return; }
+    b.classList.add('done');
+    label.innerHTML = '<span class="es-only">¡Copiado!</span><span class="en-only">Copied!</span>';
+    setTimeout(() => { b.classList.remove('done'); label.innerHTML = original; }, 1800);
+  });
+</script>

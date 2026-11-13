@@ -1,26 +1,28 @@
 # Edwin Velasquez — Personal Portfolio
 
-Personal portfolio built with Astro, React, and Tailwind CSS. Features bilingual support (Spanish / English), animated sections, and a fully responsive layout.
+Personal portfolio built with Astro and Tailwind CSS. Bilingual (Spanish / English), static, with no client framework: small inline scripts handle the language toggle, project carousels, lightbox and scroll reveals.
 
 ## Tech Stack
 
 | Layer      | Technology                              |
 |------------|-----------------------------------------|
 | Framework  | Astro 5                                 |
-| UI         | React 18                                |
 | Styling    | Tailwind CSS v4                         |
 | Language   | TypeScript                              |
-| Animations | Anime.js                                |
+| Animations | CSS + IntersectionObserver |
 | Build tool | Vite (via Astro)                        |
 
 ## Sections
 
-- **Hero** — animated greeting, CTA buttons, social links, downloadable CV
-- **About** — background, focus areas, tech stack badges
-- **Experience** — professional timeline
-- **Projects** — featured work with links and descriptions
-- **Certificates** — relevant courses and certifications
-- **Contact** — contact form and direct links
+- **Hero** — headline, availability, CV download, key stats
+- **About** — profile and grouped tech stack
+- **Projects** — 6 case studies with screenshot carousels + filterable grid of more projects (data in `src/data/projects.ts`, images in `public/projects/<slug>/`)
+- **AI** — AI-assisted engineering workflow
+- **Experience** — timeline
+- **Education** — degree (diploma with ID masked), certifications
+- **Contact** — email (copy / mailto) and WhatsApp; no form
+
+The CV lives in `public/cv.html`; export it to `public/edwinVelasquezCV.pdf` (A4, one page) after editing.
 
 ## Getting Started
 

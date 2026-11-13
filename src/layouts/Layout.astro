@@ -1,15 +1,12 @@
 ---
 import '../styles/global.css';
 
-interface Props {
-  title?: string;
-  description?: string;
-}
-
+interface Props { title?: string; description?: string; }
 const {
-  title = 'Edwin Velasquez — Desarrollador Full Stack',
-  description = 'Desarrollador Full Stack & Programador Creativo. Construyo experiencias digitales elegantes y eficientes.',
+  title = 'Edwin Velásquez — Ingeniero de Software · Full Stack & IA',
+  description = 'Ingeniero de Software de Medellín, Colombia. Desarrollo plataformas web, SaaS y herramientas a medida en producción, con flujos de trabajo potenciados por IA.',
 } = Astro.props;
+const site = 'https://edwin-portafolio.up.railway.app';
 ---
 
 <!doctype html>
@@ -17,39 +14,79 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0d1117" />
+    <meta name="theme-color" content="#06080d" />
+    <meta name="author" content="Edwin Velásquez Giraldo" />
+    <link rel="canonical" href={site + '/'} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site + '/'} />
+    <meta property="og:image" content={site + '/projects/cammetrics/01.webp'} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Contexto para agentes de IA" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>{title}</title>
-
-    <!-- Apply saved language immediately to avoid flash -->
     <script is:inline>
       (function () {
-        const lang = localStorage.getItem('portfolio-lang') || 'es';
-        if (lang === 'en') document.documentElement.classList.add('lang-en');
+        var lang = 'es';
+        try { lang = localStorage.getItem('portfolio-lang') || (navigator.language || 'es').slice(0, 2); } catch (e) {}
+        if (lang === 'en') { document.documentElement.classList.add('lang-en'); document.documentElement.lang = 'en'; }
       })();
     </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'Person', name: 'Edwin Velásquez Giraldo',
+      jobTitle: 'Ingeniero de Software', url: site, sameAs: ['https://github.com/edwinvg99'],
+      address: { '@type': 'PostalAddress', addressLocality: 'Medellín', addressCountry: 'CO' },
+      alumniOf: 'Tecnológico de Antioquia — Institución Universitaria',
+    })} />
   </head>
   <body>
     <slot />
 
     <script>
-      const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-      );
-      els.forEach((el) => observer.observe(el));
+      // reveal on scroll
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // infinite marquees: ease the speed down on hover instead of an abrupt pause
+      document.querySelectorAll<HTMLElement>('[data-marquee]').forEach((m) => {
+        const track = m.querySelector<HTMLElement>('.marquee-track, .logos-track');
+        if (!track) return;
+        let rate = 1, target = 1, raf = 0;
+        const step = () => {
+          const anim = track.getAnimations()[0];
+          rate += (target - rate) * 0.1;
+          if (Math.abs(target - rate) < 0.01) { rate = target; raf = 0; } else raf = requestAnimationFrame(step);
+          if (anim) anim.playbackRate = rate;
+        };
+        const ease = (t: number) => { target = t; if (!raf) raf = requestAnimationFrame(step); };
+        m.addEventListener('pointerenter', () => ease(0.15));
+        m.addEventListener('pointerleave', () => ease(1));
+      });
+
+      // language toggle (any element with [data-set-lang])
+      const applyLang = (lang: string) => {
+        document.documentElement.classList.toggle('lang-en', lang === 'en');
+        document.documentElement.lang = lang;
+        document.querySelectorAll<HTMLElement>('[data-set-lang]').forEach((b) =>
+          b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)));
+        try { localStorage.setItem('portfolio-lang', lang); } catch {}
+      };
+      applyLang(document.documentElement.classList.contains('lang-en') ? 'en' : 'es');
+      document.addEventListener('click', (ev) => {
+        const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-set-lang]');
+        if (b) applyLang(b.dataset.setLang!);
+      });
     </script>
   </body>
 </html>

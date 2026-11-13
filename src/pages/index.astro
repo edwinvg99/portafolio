@@ -1,22 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
-import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
-import Certificates from '../components/Certificates.astro';
-import Contact from '../components/Contact';
-import FloatingButtons from '../components/FloatingButtons';
+import AI from '../components/AI.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import FloatingButtons from '../components/FloatingButtons.astro';
 ---
 
 <Layout>
-  <Navbar client:load />
-  <Hero client:load />
-  <About />
-  <Experience />
-  <Projects />
-  <Certificates />
-  <Contact client:load />
-  <FloatingButtons client:load />
+  <Navbar />
+  <main>
+    <Hero />
+    <About />
+    <Projects />
+    <AI />
+    <Experience />
+    <Education />
+    <Contact />
+  </main>
+  <FloatingButtons />
 </Layout>
